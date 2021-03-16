@@ -25,6 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('emergency_contact');
             $table->string('cc');
             $table->string('residence');
+            $table->date('birthday');
             $table->timestamps();
         });
     }
