@@ -17,8 +17,8 @@ class CreateNoticesTable extends Migration
             $table->id();
             $table->string('reason');
             $table->string('description')->nullable();
-            $table->integer('user_id')->unsigned();
-            $table->integer('student_id')->unsigned();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('student_id')->constrained();
             $table->timestamp('occurrence_date');
             $table->timestamps();
         });

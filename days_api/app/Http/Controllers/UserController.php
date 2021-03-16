@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\CreateUser;
 
 class UserController extends Controller
 {
@@ -13,19 +14,14 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function store(Request $request)
+    public function store(CreateUser $request)
     {
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
-            'role_id' => 'required|integer',
-            'cc' => 'required|string|unique:users',
-            'contact' => 'required|string|max:15|unique:users',
-        ]);
+        $data = $request->validated();
 
-        User::create($request->all());
+        $user = User::create($data);
+
+        return $user;
 
     }
 
@@ -40,6 +36,8 @@ class UserController extends Controller
         
         $user = User::findOrFail($id);
         $user->update($request->all());
+
+        return $user;
 
     }
 

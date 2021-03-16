@@ -15,8 +15,8 @@ class CreateCommunicationsTable extends Migration
     {
         Schema::create('communications', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->foreignId('student_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->string('content');
             $table->timestamps();

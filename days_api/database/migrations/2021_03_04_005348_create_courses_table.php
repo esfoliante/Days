@@ -17,8 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            // ! CHANGE THIS
-            $table->integer('user_id')->unsigned();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

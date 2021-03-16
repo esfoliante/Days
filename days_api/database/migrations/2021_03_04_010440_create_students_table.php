@@ -17,15 +17,15 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->integer('tutor_id')->unsigned();
-            $table->integer('parent_id')->unsigned();
-            $table->integer('class_id')->unsigned();
+            $table->string('password');
+            $table->foreignId('tutor_id')->constrained();
+            $table->foreignId('course_id')->constrained();
             $table->string('limitation')->nullable();
             $table->string('allergies')->nullable();
-            $table->timestamps();
             $table->string('emergency_contact');
             $table->string('cc');
             $table->string('residence');
+            $table->timestamps();
         });
     }
 

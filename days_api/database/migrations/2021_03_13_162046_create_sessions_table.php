@@ -15,8 +15,8 @@ class CreateSessionsTable extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id')->unsigned()->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreignId('student_id')->constrained()->nullable();
+            $table->foreignId('user_id')->constrained()->nullable();
             $table->string('session_id');
             $table->string('device_information');
             $table->string('ip');

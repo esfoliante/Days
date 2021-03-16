@@ -15,7 +15,7 @@ class CreateEntranceTable extends Migration
     {
         Schema::create('entrance', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id')->unsigned();
+            $table->foreignId('student_id')->constrained();
             $table->string('action_type');
             $table->timestamps();
         });

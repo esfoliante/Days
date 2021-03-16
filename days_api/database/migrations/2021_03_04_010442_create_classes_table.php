@@ -16,11 +16,10 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('course_id')->unsigned();
+            $table->foreignId('course_id')->constrained();
             $table->integer('year');
-            // ! CHANGE THIS
-            $table->integer('user_id')->unsigned();
-            $table->integer('student_id')->unsigned();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('student_id')->constrained();
             $table->timestamps();
         });
     }

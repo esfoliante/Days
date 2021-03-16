@@ -15,8 +15,8 @@ class CreateMealsStudentsTable extends Migration
     {
         Schema::create('meals_students', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id')->unsigned();
-            $table->integer('meal_id')->unsigned();
+            $table->foreignId('student_id')->constrained();
+            $table->foreignId('meal_id')->constrained();
             $table->timestamps();
         });
     }
