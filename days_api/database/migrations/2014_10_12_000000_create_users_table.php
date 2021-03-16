@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->string('cc');
             $table->string('contact');
+            $table->date('birthday');
             $table->rememberToken();
             $table->timestamps();
         });

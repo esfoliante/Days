@@ -24,6 +24,7 @@ class CreateTutorsTable extends Migration
             $table->string('cc');
             $table->string('NIF');
             $table->string('residence');
+            $table->date('birthday');
             $table->timestamps();
         });
     }
