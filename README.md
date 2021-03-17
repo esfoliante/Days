@@ -25,4 +25,8 @@ I would love to get feedback!
 
 <br/>
 
+## Wanna help me? 
+
+<a href="https://www.buymeacoffee.com/esfoliante" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="130"></a>
+
 Made with 💙 by **Miguel Ferreira**
