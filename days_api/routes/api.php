@@ -8,6 +8,8 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\EntrancesController;
+use App\Http\Controllers\ClassroomsController;
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -24,3 +26,7 @@ Route::resource('students', StudentsController::class);
 Route::resource('subjects', SubjectsController::class);
 
 Route::resource('roles', RolesController::class);
+
+Route::resource('entrances', EntrancesController::class);
+
+Route::resource('classrooms', ClassroomsController::class);
