@@ -18,6 +18,7 @@ class CreateMarksTable extends Migration
             $table->foreignId('student_id')->constrained();
             $table->foreignId('subject_id')->constrained();
             $table->integer('year');
+            $table->integer('term');
             $table->integer('mark');
             $table->timestamps();
         });

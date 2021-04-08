@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
             SubjectsSeeder::class,
             EntranceSeeder::class,
             ClassroomsSeeder::class,
+            ClassesSeeder::class,
+            NoticesSeeder::class,
+            ParentsSeeder::class,
+            MeetingsSeeder::class,
+            MarksSeeder::class,
+            // AccountMovementsSeeder::class,
         ]);
     }
 }

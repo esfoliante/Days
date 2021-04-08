@@ -25,7 +25,7 @@ class CreateClassroom extends FormRequest
     {
         return [
             'department' => 'required|string|max:10',
-            'floor' => 'required|int',
+            'floor' => 'required|integer',
             'number' => 'required|integer',
         ];
     }

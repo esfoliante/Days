@@ -10,6 +10,12 @@ use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\EntrancesController;
 use App\Http\Controllers\ClassroomsController;
+use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\NoticesController;
+use App\Http\Controllers\ParentsController;
+use App\Http\Controllers\AccountMovementsController;
+use App\Http\Controllers\MeetingsController;
+use App\Http\Controllers\MarksController;
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -30,3 +36,15 @@ Route::resource('roles', RolesController::class);
 Route::resource('entrances', EntrancesController::class);
 
 Route::resource('classrooms', ClassroomsController::class);
+
+Route::resource('classes', ClassesController::class);
+
+Route::resource('notices', NoticesController::class);
+
+Route::resource('parents', ParentsController::class);
+
+Route::resource('account-movements', AccountMovementsController::class);
+
+Route::resource('meetings', MeetingsController::class);
+
+Route::resource('marks', MarksController::class);

@@ -15,7 +15,6 @@ class CreateMeetingsTable extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->string('content');
