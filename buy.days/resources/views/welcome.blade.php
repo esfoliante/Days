@@ -17,7 +17,7 @@
             <form action="" class="self-center flex flex-col">
                 <input type="text" name="txtName" placeholder="Nome da escola"
                     class="mt-20 p-2 rounded-sm w-80 md:w-96 border-2 border-gray-200" />
-                <input type="email" name="txtEmail" placeholder="E-mail da escola" class="mt-5 p-2 rounded-sm
+                <input type="email" name="email" placeholder="E-mail da escola" class="mt-5 p-2 rounded-sm
                     w-80 md:w-96 border-2 border-gray-200">
                 <input type="text" name="txtNIF" placeholder="Número de contribuinte"
                     class="mt-5 p-2 rounded-sm w-80 md:w-96 border-2 border-gray-200" />

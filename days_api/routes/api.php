@@ -16,6 +16,9 @@ use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\AccountMovementsController;
 use App\Http\Controllers\MeetingsController;
 use App\Http\Controllers\MarksController;
+use App\Http\Controllers\AssessmentsController;
+use App\Http\Controllers\SchedulesController;
+use App\Http\Controllers\AbsencesController;
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -48,3 +51,9 @@ Route::resource('account-movements', AccountMovementsController::class);
 Route::resource('meetings', MeetingsController::class);
 
 Route::resource('marks', MarksController::class);
+
+Route::resource('assessments', AssessmentsController::class);
+
+Route::resource('schedule', SchedulesController::class);
+
+Route::resource('absences', AbsencesController::class);

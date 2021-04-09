@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
             ParentsSeeder::class,
             MeetingsSeeder::class,
             MarksSeeder::class,
+            AssessmentsSeeder::class,
+            ScheduleSeeder::class,
+            AbsencesSeeder::class,
             // AccountMovementsSeeder::class,
         ]);
     }
