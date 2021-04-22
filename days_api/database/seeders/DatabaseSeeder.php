@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             AssessmentsSeeder::class,
             ScheduleSeeder::class,
             AbsencesSeeder::class,
+            CommunicationsSeeder::class,
+            CommunicationStudentSeeder::class,
             // AccountMovementsSeeder::class,
         ]);
     }
