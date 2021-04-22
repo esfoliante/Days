@@ -46,4 +46,5 @@ class ClassesController extends Controller
         $class->delete();
 
     }
+    
 }
