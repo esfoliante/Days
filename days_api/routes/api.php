@@ -21,6 +21,8 @@ use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\AbsencesController;
 use App\Http\Controllers\CommunicationsController;
 use App\Http\Controllers\CommunicationStudentController;
+use App\Http\Controllers\MealsController;
+use App\Http\Controllers\MealStudentsController;
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -63,3 +65,7 @@ Route::resource('absences', AbsencesController::class);
 Route::resource('communications', CommunicationsController::class);
 
 Route::resource('communication-student', CommunicationStudentController::class);
+
+Route::resource('meals', MealsController::class);
+
+Route::resource('meal-students', MealStudentsController::class);
