@@ -1,80 +1,41 @@
 <template>
-  <div class="container">
+  <div
+    class="min-h-screen flex justify-center items-center text-center mx-auto"
+  >
     <div>
       <Logo />
-      <h1 class="title">
-        days_buy
+      <h1 class="text-4xl mt-10 text-gray-700 px-6 md:px-0">
+        <span class="font-bold">Bem vindo(a)</span> ao futuro das escolas
+        inteligentes
       </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
+      <p class="mt-10 md:mt-20 px-5 md:px-72 lg:px-96 text-xl">
+        <span class="font-bold">Days</span> é um sistema de gestão escolar que
+        tem como foco principal melhorar a experiência na escola tornando-a mais
+        inteligente e mais agradável ao aluno. <br />
+        Abrace a tecnologia, abrace a inovação, abrace o
+        <span class="font-bold">Days</span>.
+      </p>
+      <nuxt-link to="/buy-form">
+        <p
+          class="mt-28 md:mt-32 border-gray-700 border-2 p-3 w-44 rounded-lg font-extrabold hover:bg-gray-700 hover:text-white hover:shadow-lg transition duration-500 ease-in-out mx-auto"
         >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+          C O M P R A R
+        </p>
+      </nuxt-link>
+      <p class="mt-5">
+        Já comprou o Days? Entre
+        <a href="http://buy.days.test" target="_blank" class="underline">aqui</a
+        >!
+      </p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 
-export default Vue.extend({})
+export default Vue.extend({});
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
