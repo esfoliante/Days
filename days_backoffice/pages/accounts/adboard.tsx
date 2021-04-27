@@ -24,7 +24,7 @@ const RegisterAccount: React.FC = () => {
             <input type="text" id="txtName" name="txtName" placeholder="Nome completo..." className="mx-auto rounded border-none w-1/5 h-10 pl-3 py-5 text-lg shadow focus:outline-none ring-2 ring-gray-500 focus:border-transparent" required />
             <input type="email" id="txtEmail" name="txtEmail" placeholder="E-mail..." className="mx-auto mt-5 rounded border-none w-1/5 h-10 pl-3 py-5 text-lg shadow focus:outline-none ring-2 ring-gray-500 focus:border-transparent" required />
             <input type="text" id="txtContact" name="txtContact" placeholder="Número de telefone..." className="mx-auto mt-5 rounded border-none w-1/5 h-10 pl-3 py-5 text-lg shadow focus:outline-none ring-2 ring-gray-500 focus:border-transparent" required />
-            <p className="text-sm align-left mt-3">Esqueceu-se da password? Clique <a href="#" className="underline">aqui</a>!</p>
+            <p className="text-sm align-left mt-5">A password será gerada automaticamente pelo sistema</p>
             <button type="submit" className="mx-auto mt-20 text-lg align-center text-gray-800 font-bold w-48 text-center py-3 rounded-lg border-2 border-solid border-gray-800 bg-white hover:bg-gray-800 hover:text-white transition duration-500 ease-in-out">C R I A R</button>
         </form>
     )
