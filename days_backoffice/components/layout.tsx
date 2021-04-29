@@ -23,9 +23,9 @@ const Layout: React.FC = props => (
         crossOrigin=""
       />
     </Head>
-    <body className="font-display">
+    <div className="font-display min-h-screen">
       {props.children}
-    </body>
+    </div>
   </div>
 );
 

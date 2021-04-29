@@ -1,6 +1,6 @@
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 
-export default function Home() {
+export default function Landing() {
   return (
     <Layout>
       <div className="min-h-screen min-w-screen flex flex-col my-auto mx-auto justify-center text-center">

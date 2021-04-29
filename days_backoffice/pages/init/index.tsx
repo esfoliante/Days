@@ -1,4 +1,4 @@
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import ReactCodeInput from 'react-code-input';
 
 const CodeForm: React.FC = () => {
