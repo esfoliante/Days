@@ -7,16 +7,16 @@ const Accounts: React.FC = () => (
         <div className="mt-10">
             <Section title="Professores">
                 <div className="grid grid-flow-row grid-cols-10 gap-5">
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
-                    <ProfileCard name="João Pecados" image="teacher.png" />
+                    <ProfileCard name="Pedro Ilusões" image="teacher.png" />
+                    <ProfileCard name="Pedro Fugas" image="teacher.png" />
+                    <ProfileCard name="Pedro Salvações" image="teacher.png" />
+                    <ProfileCard name="Pedro Defensivo" image="teacher.png" />
+                    <ProfileCard name="Pedrini o 3º" image="teacher.png" />
+                    <ProfileCard name="São Pedrini" image="teacher.png" />
+                    <ProfileCard name="Pedro pisca olho" image="teacher.png" />
+                    <ProfileCard name="Pedro Santos" image="teacher.png" />
+                    <ProfileCard name="PG" image="teacher.png" />
+                    <ProfileCard name="Padre Pedrini" image="teacher.png" />
                 </div>
             </Section>
             <Section title="Funcionários">
