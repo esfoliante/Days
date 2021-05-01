@@ -23,6 +23,7 @@ const Courses: React.FC = () => (
                             <CourseCard name="Informática e Tecnologias Multimédia" slug="ITM" director="Maria José Costa" />
                             <CourseCard name="Informática e Tecnologias Multimédia" slug="ITM" director="Maria José Costa" />
                         </div>
+                        <p className="bg-green-600 p-3 font-medium text-white w-40 rounded-md text-center">Adicionar curso</p>
                     </div>
                 </div>
             </PanelBase>

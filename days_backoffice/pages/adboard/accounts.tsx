@@ -24,6 +24,7 @@ const Accounts: React.FC = () => (
                                 <ProfileCard name="PG" image="teacher.png" />
                                 <ProfileCard name="Padre Pedrini" image="teacher.png" />
                             </div>
+                            <p className="bg-green-600 p-3 font-medium text-white w-48 rounded-md text-center">Adicionar professor</p>
                         </Section>
                         <Section title="Funcionários">
                             <div className="grid grid-flow-row grid-cols-10 gap-5">
@@ -38,6 +39,7 @@ const Accounts: React.FC = () => (
                                 <ProfileCard name="Pedrinho Abrunhosa" image="profile.jpg" />
                                 <ProfileCard name="Pedrinho Abrunhosa" image="profile.jpg" />
                             </div>
+                            <p className="bg-green-600 p-3 font-medium text-white w-48 rounded-md text-center">Adicionar funcionário</p>
                         </Section>
                     </div>
                 </div>

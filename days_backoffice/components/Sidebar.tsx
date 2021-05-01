@@ -34,7 +34,7 @@ const Sidebar: React.FC = props => (
             <SidebarItem
                 icon={<FeatherIcons.Users />}
                 title="Turmas"
-                location="/" />
+                location="/adboard/classes" />
             <SidebarItem
                 icon={<FeatherIcons.Calendar />}
                 title="Horários"
