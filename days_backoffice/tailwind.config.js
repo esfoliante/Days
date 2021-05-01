@@ -2,7 +2,7 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  purge: ['./pages/**/*.jsx'],
+  purge: ['./pages/**/*.{js,ts,tsx,jsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {

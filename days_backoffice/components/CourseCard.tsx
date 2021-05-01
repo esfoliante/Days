@@ -1,29 +1,30 @@
+import { url } from 'node:inspector';
 import { Edit, Eye } from 'react-feather';
 
 export interface CourseCardProps {
     name: string,
-    image: string,
+    image?: string,
     slug: string,
+    director: string,
 }
 
 
-const checkCoursePic = (image, name) => {
+const checkCoursePic = (image: string, name: string) => {
 
 
     if (image == undefined || image == '') {
-        return `https://eu.ui-avatars.com/api/?name=${name}&bold=true`;
+        return '/course-default.jpg';
     }
 
-    return image;
+    return '/' + image;
 
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ name, slug, image }) => (
-    <div className="col-span-2 h-80 shadow rounded-md items-center text-center">
-        <img src={checkCoursePic(image, name)} alt={name} className="w-32 rounded-full mt-8" />
-        <p className="text-lg font-medium ml-3 mr-3 truncate overflow-ellipsis">{name}</p>
-        <p className="text-md">{slug}</p>
-        <div className="flex w-full justify-items-center gap-5">
+const CourseCard: React.FC<CourseCardProps> = ({ name, slug, director, image }) => (
+    <div className="col-span-4 h-60 shadow rounded-md items-center text-left bg-cover bg-center pl-5" style={{ backgroundImage: `url(` + checkCoursePic(image, name) + `)` }}>
+        <p className="text-xl text-white font-bold mt-5 truncate overflow-ellipsis">{name}</p>
+        <p className="text-md text-white mt-5">{slug} - <span className="font-medium">{director}</span></p>\
+        <div className="grid grid-flow-col place-content-start mt-14 gap-5">
             <div className="text-center w-10 h-10 bg-yellow-300 rounded-md ml-auto">
                 <Edit size={20} className="mt-2 text-white" />
             </div>

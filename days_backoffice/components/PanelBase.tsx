@@ -26,9 +26,12 @@ const PanelBase: React.FC = ({ children }) => (
         <div className="w-full">
             <div className="flex items-center justify-between space-y-auto px-10 w-full shadow-sm h-16">
                 <Menu className="text-gray-800 cursor-pointer" size={32} onClick={sidebarState} />
-                <Link href="/">
-                    <p className="cursor-pointer">Sair</p>
-                </Link>
+                <div className="flex gap-5 items-center">
+                    <img src="/me.jpg" alt="User profile" className="w-10 h-10 rounded-full" />
+                    <Link href="/">
+                        <p className="cursor-pointer">Sair</p>
+                    </Link>
+                </div>
             </div>
 
             {children}

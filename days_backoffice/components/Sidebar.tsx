@@ -9,37 +9,48 @@ const Sidebar: React.FC = props => (
         <div className="grid grid-flow-row mt-5 gap-1">
             <SidebarItem
                 icon={<FeatherIcons.Home />}
-                title="Home" />
+                title="Home"
+                location="/adboard" />
             <SidebarItem
                 icon={<FeatherIcons.User />}
-                title="Contas" />
+                title="Contas"
+                location="/adboard/accounts" />
             <SidebarItem
                 icon={<FeatherIcons.Tool />}
-                title="Cargos" />
+                title="Cargos"
+                location="/adboard/roles" />
             <SidebarItem
                 icon={<FeatherIcons.MapPin />}
-                title="Salas" />
+                title="Salas"
+                location="/" />
             <SidebarItem
                 icon={<FeatherIcons.BookOpen />}
-                title="Cursos" />
+                title="Cursos"
+                location="/adboard/courses" />
             <SidebarItem
                 icon={<FeatherIcons.Book />}
-                title="Disciplinas" />
+                title="Disciplinas"
+                location="/" />
             <SidebarItem
                 icon={<FeatherIcons.Users />}
-                title="Turmas" />
+                title="Turmas"
+                location="/" />
             <SidebarItem
                 icon={<FeatherIcons.Calendar />}
-                title="Horários" />
+                title="Horários"
+                location="/" />
             <SidebarItem
                 icon={<FeatherIcons.ShoppingBag />}
-                title="Refeições" />
+                title="Refeições"
+                location="/" />
             <SidebarItem
                 icon={<FeatherIcons.Monitor />}
-                title="Entradas e Saídas" />
+                title="Entradas e Saídas"
+                location="/adboard/entrance" />
             <SidebarItem
                 icon={<FeatherIcons.Mail />}
-                title="Comunicados" />
+                title="Comunicações"
+                location="/adboard/communications" />
         </div>
     </div>
 );
