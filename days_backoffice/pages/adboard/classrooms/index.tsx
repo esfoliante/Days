@@ -1,6 +1,6 @@
-import ClassroomCard from '../../components/ClassroomCard';
-import PanelBase from '../../components/PanelBase';
-import Layout from '../../components/Layout';
+import ClassroomCard from '../../../components/ClassroomCard';
+import PanelBase from '../../../components/PanelBase';
+import Layout from '../../../components/Layout';
 import React from 'react';
 
 

@@ -1,7 +1,7 @@
-import PanelBase from '../../components/PanelBase';
-import Layout from '../../components/Layout';
+import PanelBase from '../../../components/PanelBase';
+import Layout from '../../../components/Layout';
 import React from 'react';
-import Communication from '../../components/Communication';
+import Communication from '../../../components/Communication';
 
 
 const Communications: React.FC = () => (

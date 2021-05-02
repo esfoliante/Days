@@ -1,4 +1,3 @@
-import { url } from 'node:inspector';
 import { Edit, Eye } from 'react-feather';
 
 export interface CourseCardProps {
