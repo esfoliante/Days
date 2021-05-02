@@ -22,7 +22,7 @@ const Sidebar: React.FC = props => (
             <SidebarItem
                 icon={<FeatherIcons.MapPin />}
                 title="Salas"
-                location="/" />
+                location="/adboard/classrooms" />
             <SidebarItem
                 icon={<FeatherIcons.BookOpen />}
                 title="Cursos"
@@ -30,7 +30,7 @@ const Sidebar: React.FC = props => (
             <SidebarItem
                 icon={<FeatherIcons.Book />}
                 title="Disciplinas"
-                location="/" />
+                location="/adboard/subjects" />
             <SidebarItem
                 icon={<FeatherIcons.Users />}
                 title="Turmas"

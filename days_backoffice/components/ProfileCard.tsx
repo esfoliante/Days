@@ -45,7 +45,7 @@ const checkEdit = (canEdit) => {
 const ProfileCard: React.FC<ProfileCardProps> = ({ name, image, canEdit = true }) => (
     <div className="col-span-2 h-72 shadow rounded-md items-center text-center">
         <img src={checkProfilePic(image, name)} alt={name} className="w-32 h-32 rounded-full mt-8" />
-        <p className="text-lg font-medium truncate overflow-ellipsis">{name}</p>
+        <p className="text-lg font-medium truncate overflow-ellipsis px-5">{name}</p>
         {checkEdit(canEdit)}
     </div>
 );
