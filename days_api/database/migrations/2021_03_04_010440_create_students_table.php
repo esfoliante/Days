@@ -26,6 +26,7 @@ class CreateStudentsTable extends Migration
             $table->string('cc');
             $table->string('residence');
             $table->date('birthday');
+            $table->boolean('first_login')->default(false);
             $table->timestamps();
         });
     }

@@ -12,7 +12,8 @@ class StudentsController extends Controller
     
     public function index()
     {
-        return new StudentCollection(Student::all());
+        // return new StudentCollection(Student::all());
+        return Student::all();
     }
 
     public function store(CreateStudent $request)

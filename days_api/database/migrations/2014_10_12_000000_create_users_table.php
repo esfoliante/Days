@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('cc');
             $table->string('contact');
             $table->date('birthday');
+            $table->boolean('first_login')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
