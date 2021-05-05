@@ -15,4 +15,8 @@ class Absence extends Model
         'absence_date',
     ];
 
+    public function student() {
+        return $this->belongsTo(Student::class);
+    }
+
 }

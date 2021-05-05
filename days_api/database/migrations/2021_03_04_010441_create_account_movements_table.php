@@ -15,8 +15,8 @@ class CreateAccountMovementsTable extends Migration
     {
         Schema::create('account_movements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->nullable();
-            $table->foreignId('student_id')->constrained()->nullable();
+            $table->foreignId('user_id')->nullable()->constrained()->default(0);
+            $table->foreignId('student_id')->nullable()->constrained()->default(0);
             $table->float('amount');
             $table->string('transaction_type');
             $table->string('location');

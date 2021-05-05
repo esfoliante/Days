@@ -19,4 +19,12 @@ class AccountMovement extends Model
         'location',
     ];
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function student() {
+        return $this->belongsTo(Student::class);
+    }
+
 }
