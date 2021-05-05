@@ -4,9 +4,9 @@ import Layout from '../../../../components/Layout';
 import React from 'react';
 import { Check } from 'react-feather';
 
-const SubjectForm: React.FC = () => {
+const CourseForm: React.FC = () => {
 
-    const editSubject = async event => {
+    const editCourse = async event => {
         event.preventDefault()
 
         const res = await fetch('/api/register', {
@@ -24,25 +24,29 @@ const SubjectForm: React.FC = () => {
     }
 
     return (
-        <form onSubmit={editSubject} className="w-full">
-            <p>Nome da disciplina</p>
-            <input type="text" placeholder="Nome da disciplina..." id="txtName" name="txtName" defaultValue="Português" className="pl-2 h-10 w-1/5 x-auto rounded border-none py-5 shadow focus:outline-none ring-2 ring-gray-500 focus:border-transparent" />
+        <form onSubmit={editCourse} className="w-full">
+            <p>Nome do curso</p>
+            <input placeholder="Nome do curso..." id="txtName" name="txtName" defaultValue="Informática e Tecnologias Multimédia" className="pl-2 h-10 w-1/5 x-auto rounded border-none py-5 shadow ring-2 ring-gray-500 bg-white" />
+            <p>Acrónimo</p>
+            <input placeholder="Acrónimo..." id="txtSlug" name="txtSlug" defaultValue="ITM" className="pl-2 h-10 w-1/5 x-auto rounded border-none py-5 shadow ring-2 ring-gray-500 bg-white" />
+            <p>Diretor(a) de curso</p>
+            <input placeholder="Diretor(a) de curso..." id="txtCourseDirector" name="txtCourseDirector" defaultValue="Maria José Costa" className="pl-2 h-10 w-1/5 x-auto rounded border-none py-5 shadow ring-2 ring-gray-500 bg-white" />
             <div className="text-center w-10 h-10 bg-blue-400 rounded-md mt-5">
                 <Check size={20} className="mt-2 text-white" />
             </div>
-        </form>
+        </form >
     )
 }
 
 
-const EditSubject: React.FC = () => (
+const EditCourse: React.FC = () => (
     <Layout>
         <div className="w-full min-h-full">
             <PanelBase>
                 <div className="m-10">
-                    <Section title="Disciplina">
+                    <Section title="Salas">
                         <div className="flex flex-col">
-                            <SubjectForm />
+                            <CourseForm />
                         </div>
                     </Section>
                 </div>
@@ -51,4 +55,4 @@ const EditSubject: React.FC = () => (
     </Layout>
 );
 
-export default EditSubject;
+export default EditCourse;

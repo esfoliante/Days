@@ -26,7 +26,7 @@ const RoleForm: React.FC = () => {
     return (
         <form onSubmit={editRole} className="w-full">
             <p>Nome do cargo</p>
-            <input placeholder="Nome do cargo..." id="txtName" name="txtName" value="Funcionário" className="pl-2 h-10 w-1/5 text-md shadow-inner focus:ring-2 focus:ring-green-600 text-black" />
+            <input type="text" placeholder="Nome do cargo..." id="txtName" name="txtName" defaultValue="Funcionário" className="pl-2 h-10 w-1/5 x-auto rounded border-none py-5 shadow focus:outline-none ring-2 ring-gray-500 focus:border-transparent" />
             <div className="text-center w-10 h-10 bg-blue-400 rounded-md mt-5">
                 <Check size={20} className="mt-2 text-white" />
             </div>
