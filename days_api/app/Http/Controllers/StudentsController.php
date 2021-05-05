@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Http\Requests\CreateStudent;
+use App\Http\Resources\StudentCollection;
 
 class StudentsController extends Controller
 {
     
     public function index()
     {
-        return Student::all();
+        return new StudentCollection(Student::all());
     }
 
     public function store(CreateStudent $request)

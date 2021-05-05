@@ -1,4 +1,4 @@
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import ReactCodeInput from 'react-code-input';
 
 const CodeForm: React.FC = () => {
@@ -22,7 +22,7 @@ const CodeForm: React.FC = () => {
 
     return (
         <form onSubmit={validateCode} className="flex flex-col">
-            <ReactCodeInput type='text' fields={10} />
+            <ReactCodeInput type='text' fields={10} name="pinCode" inputMode="latin" />
             <button type="submit" className="mx-auto mt-40 text-lg align-center text-gray-800 font-bold w-48 text-center py-3 rounded-lg border-2 border-solid border-gray-800 bg-white hover:bg-gray-800 hover:text-white transition duration-500 ease-in-out">V A L I D A R</button>
         </form>
     )

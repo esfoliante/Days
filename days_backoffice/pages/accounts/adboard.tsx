@@ -1,4 +1,4 @@
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 
 const RegisterAccount: React.FC = () => {
 
@@ -35,7 +35,7 @@ export default function Adboard() {
         <Layout>
             <div className="min-h-screen min-w-screen flex flex-col my-auto mx-auto justify-center text-center">
                 <img src="/logo.svg" alt="App logo" className="w-80 md:w-96 lg:w-96 mx-auto" />
-                <p className="text-2xl md:text-3l lg:text-3xl mt-10">Agora precisamos que crie uma conta para a <span className="font-bold">direção</span> da escola</p>
+                <p className="text-2xl md:text-3l lg:text-3xl mt-10">Agora precisamos que crie uma conta para a <span className="font-bold">secretaria</span> da escola</p>
                 <RegisterAccount />
                 <p className="mt-3">Ainda não tem Days? Compre <a href="#" className="underline">aqui</a>!</p>
             </div>

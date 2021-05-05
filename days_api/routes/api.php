@@ -22,44 +22,26 @@ use App\Http\Controllers\AbsencesController;
 use App\Http\Controllers\CommunicationsController;
 use App\Http\Controllers\CommunicationStudentController;
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
-Route::resource('users', UserController::class);
-
-Route::resource('tutors', TutorsController::class);
-
-Route::resource('courses', CoursesController::class);
-
-Route::resource('students', StudentsController::class);
-
-Route::resource('subjects', SubjectsController::class);
-
-Route::resource('roles', RolesController::class);
-
-Route::resource('entrances', EntrancesController::class);
-
-Route::resource('classrooms', ClassroomsController::class);
-
-Route::resource('classes', ClassesController::class);
-
-Route::resource('notices', NoticesController::class);
-
-Route::resource('parents', ParentsController::class);
-
-Route::resource('account-movements', AccountMovementsController::class);
-
-Route::resource('meetings', MeetingsController::class);
-
-Route::resource('marks', MarksController::class);
-
-Route::resource('assessments', AssessmentsController::class);
-
-Route::resource('schedule', SchedulesController::class);
-
-Route::resource('absences', AbsencesController::class);
-
-Route::resource('communications', CommunicationsController::class);
-
-Route::resource('communication-student', CommunicationStudentController::class);
+//Route::middleware('auth:api')->group( function () {
+    Route::resources([
+        'users' => UserController::class,
+        'tutors' => TutorsController::class,
+        'courses' => CoursesController::class,
+        'students' => StudentsController::class,
+        'subjects' => SubjectsController::class,
+        'roles' => RolesController::class,
+        'entrances' => EntrancesController::class,
+        'classrooms' => ClassroomsController::class,
+        'classes' => ClassesController::class,
+        'notices' => NoticesController::class,
+        'parents' => ParentsController::class,
+        'account-movements' => AccountMovementsController::class,
+        'meetings' => MeetingsController::class,
+        'marks' => MarksController::class,
+        'assessments' => AssessmentsController::class,
+        'schedule' => SchedulesController::class,
+        'absences' => AbsencesController::class,
+        'communications' => CommunicationsController::class,
+        'communication-student' => CommunicationStudentController::class,
+    ]);
+//});
