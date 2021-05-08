@@ -15,9 +15,10 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->integer('internal_number')->default(null);
             $table->string('name');
             $table->string('email');
-            $table->string('password');
+            $table->string('password')->default('');
             $table->foreignId('tutor_id')->constrained();
             $table->foreignId('course_id')->constrained();
             $table->string('limitation')->nullable();
@@ -25,7 +26,7 @@ class CreateStudentsTable extends Migration
             $table->string('emergency_contact');
             $table->string('cc');
             $table->string('residence');
-            $table->date('birthday');
+            $table->timestamp('birthday');
             $table->boolean('first_login')->default(false);
             $table->timestamps();
         });

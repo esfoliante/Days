@@ -17,6 +17,7 @@ class StudentsSeeder extends Seeder
     public function run()
     {
         DB::table('students')->insert([
+            'internal_number' => 1,
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('12345678'),
