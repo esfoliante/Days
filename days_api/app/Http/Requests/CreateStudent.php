@@ -24,9 +24,10 @@ class CreateStudent extends FormRequest
     public function rules()
     {
         return [
+            'internal_number' => 'nullable|integer|unique:students',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:students',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'nullable|string|confirmed|min:8',
             'tutor_id' => 'required|integer|exists:tutors,id',
             'course_id' => 'required|integer|exists:courses,id',
             'limitation' => 'string|nullable|max:255',
@@ -34,6 +35,8 @@ class CreateStudent extends FormRequest
             'emergency_contact' => 'required|string',
             'cc' => 'required|string|min:8|unique:students',
             'residence' => 'required|string',
+            'birthday' => 'required|date',
+            'first_login' => 'boolean'
         ];
     }
 }

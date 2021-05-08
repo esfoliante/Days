@@ -24,6 +24,7 @@ class CreateUser extends FormRequest
     public function rules()
     {
         return [
+            'internal_number' => 'nullable|integer|unique:users',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
