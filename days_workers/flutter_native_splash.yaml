@@ -1,0 +1,5 @@
+flutter_native_splash:
+  # color is the only required parameter.  It sets the background color of your splash screen.
+  color: "#FFFFFF"
+  image: assets/images/logo-min.png
+  android_fullscreen: true
