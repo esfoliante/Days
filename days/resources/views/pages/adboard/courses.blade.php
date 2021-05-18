@@ -13,4 +13,24 @@
             </x-section>
         </div>
     </div>
+    <x-form-modal title="Cursos" x-show="open" @click.away="open = false">
+        <form action="#" method="POST">
+            @csrf
+
+            <x-label for="name" class="mt-5" value="Nome do curso" />
+            <x-input id="name" class="text-gray-600 mt-2 w-full" type="text" name="name" placeholder="Nome do curso..." />
+            <x-label for="slug" class="mt-5" value="Abreviatura" />
+            <x-input id="slug" class="text-gray-600 mt-2 w-full" type="text" name="slug" placeholder="Abreviatura..." />
+            <x-label for="director" class="mt-5" value="Diretor de curso" />
+            <x-input id="director" class="text-gray-600 mt-2 w-full" type="text" name="director" placeholder="Diretor de curso..." />
+            <div class="flex mt-5 gap-3">
+                <x-button-secondary>
+                    Fechar
+                </x-button-secondary>
+                <x-button-primary>
+                    Adicionar
+                </x-button-primary>
+            </div>
+        </form>
+    </x-form-modal>
 </x-app-layout>
