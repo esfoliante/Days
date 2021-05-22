@@ -8,20 +8,17 @@ use App\Http\Requests\CreateSubject;
 
 class SubjectsController extends Controller
 {
-
-    public function index()
+    public static function index()
     {
         return Subject::all();
     }
 
     public function store(CreateSubject $request)
     {
-        
         $data = $request->validated();
         $subject = Subject::create($data);
 
         return $subject;
-
     }
 
     public function show($id)
@@ -31,19 +28,15 @@ class SubjectsController extends Controller
 
     public function update(Request $request, $id)
     {
-        
         $subject = Subject::findOrFail($id);
         $subject->update($request->all());
 
         return $subject;
-
     }
 
     public function destroy($id)
     {
-        
         $subject = Subject::findOrFail($id);
         $subject->delete();
-
     }
 }

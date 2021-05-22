@@ -1,6 +1,6 @@
 <div class="w-96 md:w-1/4 lg:w-1/4 min-h-screen shadow">
         <p class="pt-12 pl-10 pb-10 text-2xl font-bold">MENU</p>
-        <x-sidebar-item location="home" title="Home">
+        <x-sidebar-item location="/home" title="Home">
             <x-feathericon-home />
         </x-sidebar-item>
         <x-sidebar-item location="accounts" title="Contas">
@@ -15,7 +15,7 @@
         <x-sidebar-item location="courses" title="Cursos">
             <x-feathericon-book-open />
         </x-sidebar-item>
-        <x-sidebar-item location="subjects" title="Disciplinas">
+        <x-sidebar-item location="/subjects" title="Disciplinas">
             <x-feathericon-book />
         </x-sidebar-item>
         <x-sidebar-item location="classes" title="Turmas">

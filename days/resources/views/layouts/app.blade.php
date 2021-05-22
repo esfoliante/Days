@@ -23,6 +23,8 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> 
+
     @livewireStyles
 </head>
 
@@ -63,7 +65,26 @@
         </div>
     </div>
 
-    @livewireScripts
+    <script   
+			  src="https://code.jquery.com/jquery-3.6.0.js"
+			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			  crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    @livewireScripts   
+    
+    <script type="text/javascript">
+        window.livewire.on('toast-success', (message) => {
+            toastr.success(message)
+        }​​​​​​​​)
+        window.livewire.on('toast-info', (message) => {​​​​​​​​
+            toastr.info( message)
+        }​​​​​​​​)
+        window.livewire.on('toast-error', (message) => {​​​​​​​​
+            toastr.error(message)
+        }​​​​​​​​)
+    </script>
+
 </body>
 
 </html>
