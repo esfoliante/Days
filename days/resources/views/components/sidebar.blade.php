@@ -33,4 +33,7 @@
         <x-sidebar-item location="communications" title="Comunicados">
             <x-feathericon-mail />
         </x-sidebar-item>
+        <x-sidebar-item location="/food" title="Foood (TESTE)">
+            <x-feathericon-trending-down />
+        </x-sidebar-item>
     </div>
