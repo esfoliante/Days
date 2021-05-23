@@ -2,8 +2,7 @@
     <div class="m-10">
         <p class="text-3xl font-bold">Horários</p>
         <div class="mt-10">
-            <x-section title="Turmas">
-                <p class="bg-green-600 p-3 mb-5 font-medium text-white w-48 rounded-md text-center">Adicionar horário</p>
+            <x-section title="Turmas" button_title="Horários">
                 <div class="grid grid-flow-row grid-cols-5 gap-5">
                     <x-profile-card name="12º ITM" image="" canEdit=true></x-profile-card>
                     <x-profile-card name="12º AM" image="" canEdit=true></x-profile-card>

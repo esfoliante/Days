@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\ClassroomsController;
 use App\Http\Controllers\Web\CoursesController;
 use App\Http\Controllers\Web\EntranceController;
 use App\Http\Controllers\Web\CommunicationsController;
+use App\Http\Controllers\Web\FoodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +27,40 @@ use App\Http\Controllers\Web\CommunicationsController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/first-login', [FirstLoginController::class, 'index'])->name('first-login');
-    Route::post('/update-password/{id}', [FirstLoginController::class, 'update'])->name('update-password');
-    Route::get('/accounts', [AccountsController::class, 'index'])->name('accounts');
+    Route::get('/first-login', [FirstLoginController::class, 'index'])->name(
+        'first-login'
+    );
+    Route::post('/update-password/{id}', [
+        FirstLoginController::class,
+        'update',
+    ])->name('update-password');
+    Route::get('/accounts', [AccountsController::class, 'index'])->name(
+        'accounts'
+    );
     Route::get('/roles', [RolesController::class, 'index'])->name('roles');
-    Route::get('/subjects', [SubjectsController::class, 'index'])->name('subjects');
-    Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
-    Route::get('/schedules', [SchedulesController::class, 'index'])->name('schedules');
-    Route::get('/classrooms', [ClassroomsController::class, 'index'])->name('classrooms');
-    Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
-    Route::get('/entrance', [EntranceController::class, 'index'])->name('entrance');
-    Route::get('/communications', [CommunicationsController::class, 'index'])->name('communications');
+    Route::get('/subjects', [SubjectsController::class, 'index'])->name(
+        'subjects'
+    );
+    Route::get('/classes', [ClassesController::class, 'index'])->name(
+        'classes'
+    );
+    Route::get('/schedules', [SchedulesController::class, 'index'])->name(
+        'schedules'
+    );
+    Route::get('/classrooms', [ClassroomsController::class, 'index'])->name(
+        'classrooms'
+    );
+    Route::get('/courses', [CoursesController::class, 'index'])->name(
+        'courses'
+    );
+    Route::get('/entrance', [EntranceController::class, 'index'])->name(
+        'entrance'
+    );
+    Route::get('/communications', [
+        CommunicationsController::class,
+        'index',
+    ])->name('communications');
+    Route::get('/food', [FoodController::class, 'index'])->name('food');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

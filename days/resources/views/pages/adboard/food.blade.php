@@ -1,3 +1,3 @@
 <x-app-layout>
-    <livewire:subject.index />
+    <livewire:food.index>
 </x-app-layout>

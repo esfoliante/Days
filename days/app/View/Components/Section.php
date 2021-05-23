@@ -12,9 +12,14 @@ class Section extends Component
      *
      * @return void
      */
-    public function __construct(public $title)
+    public function __construct(public $title, public $clickEvent, public $button_title = '')
     {
-        //
+
+        $this->clickEvent = $clickEvent;
+
+        if($button_title == '')
+            $this->button_title = $this->title;
+
     }
 
     /**
