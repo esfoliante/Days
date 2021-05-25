@@ -1,9 +1,12 @@
+import 'package:days_mobile/domain/resources/StudentResource.dart';
+import 'package:days_mobile/stores/student.store.dart';
 import 'package:days_mobile/widgets/action_card_widget.dart';
 import 'package:days_mobile/widgets/card_widget.dart';
 import 'package:days_mobile/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flash/flash.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -24,6 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final StudentMob studentMob = Provider.of<StudentMob>(context);
+    StudentResource().getCurrentStudent().then((student) => {studentMob.setStudent(student)});
 
     return Scaffold(
       key: _scaffoldKey,
@@ -74,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: height * 0.13,
                     ),
                     CardWidget(
-                      name: "Miguel Ferreira",
+                      name: "${studentMob.student.name}",
                       processNumber: 30320,
                     ),
                     SizedBox(
@@ -136,8 +142,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ActionCard(
                       title: "Ver atividade",
-                      subtitle: "NOVO",
-                      isImportant: true,
+                      subtitle: "",
+                      isImportant: false,
                       route: "activity",
                     ),
                     SizedBox(
