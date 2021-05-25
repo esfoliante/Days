@@ -31,8 +31,8 @@ class _ActivityScreenState extends State<ActivityScreen> {
               ),
               ActionCard(
                 title: "Faltas",
-                subtitle: "NOVO",
-                isImportant: true,
+                subtitle: "",
+                isImportant: false,
                 route: "faltas",
               ),
               SizedBox(
@@ -40,8 +40,8 @@ class _ActivityScreenState extends State<ActivityScreen> {
               ),
               ActionCard(
                 title: "Participações",
-                subtitle: "NOVO",
-                isImportant: true,
+                subtitle: "",
+                isImportant: false,
                 route: "participations",
               ),
               SizedBox(

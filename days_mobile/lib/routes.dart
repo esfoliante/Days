@@ -1,3 +1,4 @@
+import 'package:days_mobile/loading_screen.dart';
 import 'package:days_mobile/screens/activity/activity_screen.dart';
 import 'package:days_mobile/screens/activity/average_screen.dart';
 import 'package:days_mobile/screens/activity/exits_screen.dart';
@@ -84,6 +85,10 @@ class RouterHandler {
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           ProfileScreen());
 
+  static final Handler _loadindScreen = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          LoadingScreen());
+
   static void setupRouter() {
     router.define(
       'login',
@@ -148,6 +153,10 @@ class RouterHandler {
     router.define(
       'profile',
       handler: _profileScreen,
+    );
+    router.define(
+      'load',
+      handler: _loadindScreen,
     );
   }
 }

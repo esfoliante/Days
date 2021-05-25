@@ -1,5 +1,6 @@
-import 'package:days_mobile/screens/initialization/choosetheme_screen.dart';
+import 'package:days_mobile/models/Student.dart';
 import 'package:flutter/material.dart';
+import 'package:days_mobile/domain/resources/StudentResource.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -9,6 +10,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -37,6 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     right: 20.0,
                   ),
                   child: TextField(
+                    controller: emailController,
+                    autocorrect: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -81,6 +96,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: TextField(
                     obscureText: true,
+                    autocorrect: false,
+                    controller: passwordController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -153,8 +170,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: width * 0.05,
                       ),
                     ),
-                    onPressed: () =>
-                        Navigator.pushNamed(context, 'chooseTheme'),
+                    onPressed: () => LoginStudent(
+                        emailController.text, passwordController.text, context,),
                   ),
                 ),
                 SizedBox(
@@ -191,4 +208,12 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+Future<void> LoginStudent(String email, String password, context) async {
+  final student = StudentResource.login(email.trim(), password.trim());
+
+  if (student == null) return 0;
+
+  Navigator.popAndPushNamed(context, 'home');
 }
