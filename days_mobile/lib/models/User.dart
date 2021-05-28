@@ -7,14 +7,15 @@ class User {
   String contact;
   String birthday;
 
-  User(
-      {this.id,
-      this.name,
-      this.email,
-      this.roleId,
-      this.cc,
-      this.contact,
-      this.birthday,});
+  User({
+    this.id,
+    this.name,
+    this.email,
+    this.roleId,
+    this.cc,
+    this.contact,
+    this.birthday,
+  });
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
