@@ -19,8 +19,6 @@ class Student extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'internal_number' => $this->internal_number,
-            'tutor_id' => $this->tutor_id,
-            'course_id' => $this->course_id,
             'limitation' => $this->limitation,
             'allergies' => $this->allergies,
             'emergency_contact' => $this->emergency_contact,
@@ -29,6 +27,8 @@ class Student extends JsonResource
             'birthday' => $this->birthday,
             'first_login' => $this->first_login,
             'transaction_total' => $this->movements_sum,
+            'tutor' => $this->tutor,
+            'course' => $this->course,
         ];
     }
 }

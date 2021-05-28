@@ -87,4 +87,9 @@ class StudentsController extends Controller
     {
         return $student->accountMovements;
     }
+
+    public function showTutor(Student $student)
+    {
+        return $student->tutor;
+    }
 }

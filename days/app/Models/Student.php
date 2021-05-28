@@ -68,4 +68,18 @@ class Student extends Model
     {
         return $this->hasMany(AccountMovement::class);
     }
+
+    public function tutor()
+    {
+        $tutor = $this->belongsTo(User::class);
+
+        return $tutor;
+    }
+
+    public function course()
+    {
+        $course = $this->belongsTo(Course::class);
+
+        return $course;
+    }
 }
