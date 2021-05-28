@@ -27,7 +27,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final dynamic allergies = studentMob.student.allergies;
 
     Widget _checkLimitation() {
-      if (limitation == null) return Container();
+      if (limitation == null)
+        return Column(
+          children: [
+            SizedBox(
+              height: height * 0.04,
+            ),
+            ProfileItem(
+              title: 'Limitações',
+              content: 'Sem limitações registadas',
+            ),
+          ],
+        );
 
       return Column(
         children: [
@@ -43,7 +54,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     Widget _checkAllergies() {
-      if (allergies == null) return Container();
+      if (allergies == null) 
+        return Column(
+          children: [
+            SizedBox(
+              height: height * 0.04,
+            ),
+            ProfileItem(
+              title: 'Alergias',
+              content: 'Sem alergias registadas',
+            ),
+          ],
+        );
 
       return Column(
         children: [
