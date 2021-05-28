@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             AbsencesSeeder::class,
             CommunicationsSeeder::class,
             CommunicationStudentSeeder::class,
-            // AccountMovementsSeeder::class,
+            AccountMovementsSeeder::class,
         ]);
     }
 }

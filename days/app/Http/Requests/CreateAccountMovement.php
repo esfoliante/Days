@@ -27,7 +27,7 @@ class CreateAccountMovement extends FormRequest
             'user_id' => 'integer|nullable|exists:users,id',
             'student_id' => 'integer|nullable|exists:students,id',
             'amount' => 'required|numeric',
-            'transaction_type' => 'required|string',
+            'is_debt' => 'required|boolean',
             'location' => 'required|string',
         ];
     }

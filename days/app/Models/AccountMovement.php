@@ -15,16 +15,17 @@ class AccountMovement extends Model
         'user_id',
         'student_id',
         'amount',
-        'transaction_type',
+        'is_debt',
         'location',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function student() {
+    public function student()
+    {
         return $this->belongsTo(Student::class);
     }
-
 }
