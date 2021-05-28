@@ -1,4 +1,6 @@
+import 'package:days_mobile/stores/student.store.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key key}) : super(key: key);
@@ -7,6 +9,8 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final StudentMob _studentMob = Provider.of<StudentMob>(context);
 
     return Drawer(
       child: Column(
@@ -75,7 +79,7 @@ class DrawerWidget extends StatelessWidget {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
-                _tab(context, "Logout", "login"),
+                _logout(context, _studentMob),
               ],
             ),
           ),
@@ -129,5 +133,29 @@ class DrawerWidget extends StatelessWidget {
         onTap: () => Navigator.of(context).popAndPushNamed(route),
       ),
     );
+  }
+
+  Widget _logout(BuildContext context, StudentMob _studentMob) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0),
+      child: ListTile(
+        title: Text(
+          "Logout",
+          style: TextStyle(
+            fontSize: height * 0.02,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        onTap: () => _logoutStudent(context, _studentMob),
+      ),
+    );
+  }
+
+  void _logoutStudent(context, StudentMob studentMob) {
+    studentMob.student = null;
+    Navigator.of(context).popAndPushNamed('login');
   }
 }

@@ -1,6 +1,9 @@
 import 'package:days_mobile/models/Student.dart';
+import 'package:days_mobile/stores/student.store.dart';
+import 'package:days_mobile/widgets/loading_dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:days_mobile/domain/resources/StudentResource.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -22,10 +25,34 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  Future<void> loginStudent(String email, String password, StudentMob studentMob, context) async {
+    _showDialog(context);
+
+    final student = await StudentResource.login(email.trim(), password.trim());
+
+    if (student == null) return 0;
+
+    studentMob.setStudent(student);
+
+    Navigator.popAndPushNamed(context, 'home');
+  }
+
+  Widget _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => LoadingDialog(
+        message: "Estamos a preparar tudo para si!",
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final StudentMob _studentMob = Provider.of<StudentMob>(context);
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -170,8 +197,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: width * 0.05,
                       ),
                     ),
-                    onPressed: () => LoginStudent(
-                        emailController.text, passwordController.text, context,),
+                    onPressed: () => loginStudent(
+                      emailController.text,
+                      passwordController.text,
+                      _studentMob,
+                      context,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -208,12 +239,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
-
-Future<void> LoginStudent(String email, String password, context) async {
-  final student = StudentResource.login(email.trim(), password.trim());
-
-  if (student == null) return 0;
-
-  Navigator.popAndPushNamed(context, 'home');
 }

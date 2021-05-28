@@ -12,21 +12,24 @@ class Student {
   String residence;
   String birthday;
   int firstLogin;
+  String transactionTotal;
 
-  Student(
-      {this.id,
-      this.internalNumber,
-      this.name,
-      this.email,
-      this.tutorId,
-      this.courseId,
-      this.limitation,
-      this.allergies,
-      this.emergencyContact,
-      this.cc,
-      this.residence,
-      this.birthday,
-      this.firstLogin,});
+  Student({
+    this.id,
+    this.internalNumber,
+    this.name,
+    this.email,
+    this.tutorId,
+    this.courseId,
+    this.limitation,
+    this.allergies,
+    this.emergencyContact,
+    this.cc,
+    this.residence,
+    this.birthday,
+    this.firstLogin,
+    this.transactionTotal,
+  });
 
   Student.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -42,6 +45,7 @@ class Student {
     residence = json['residence'];
     birthday = json['birthday'];
     firstLogin = json['first_login'];
+    transactionTotal = json['transaction_total'];
   }
 
   Map<String, dynamic> toJson() {
@@ -59,6 +63,8 @@ class Student {
     data['residence'] = this.residence;
     data['birthday'] = this.birthday;
     data['first_login'] = this.firstLogin;
+    data['transaction_total'] = this.transactionTotal;
+
     return data;
   }
 }

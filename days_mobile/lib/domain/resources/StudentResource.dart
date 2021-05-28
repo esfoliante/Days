@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:days_mobile/domain/api.dart';
 import 'package:days_mobile/models/Student.dart';
 import 'package:days_mobile/utils/config.dart';
 
@@ -32,31 +31,22 @@ class StudentResource {
     sharedPreferences.setString('token', data['token'] as String);
 
     return Student.fromJson(data['student']);
-  
   }
 
   Future<Student> getStudent(String token) async {
     final response = await http.post(
-      Uri.parse('$base_url/student'),
+      Uri.parse('$base_url/students/student'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
       },
-      body: jsonEncode(<String, String>{
-        'token': token,
-      }),
-    );
+    ) as Map<String, dynamic>;
 
-    if (response.statusCode != 200) {
+    if (response['statusCode'] != 200) {
       throw Exception('Failed to login user.');
     }
 
-
-    final Api api = Api(token);
-    final Map<String, dynamic> json =
-        await api.get('/student') as Map<String, dynamic>;
-
-    return Student.fromJson(json);
+    return Student.fromJson(response);
   }
 
   Future<Student> getCurrentStudent() async {
@@ -72,8 +62,9 @@ class StudentResource {
 
     try {
       student = await getStudent(token);
+      print("Current user check done");
     } catch (e) {
-      await sharedPreferences.setString('token', null);
+      await sharedPreferences.setString('token', '');
     }
 
     return student;
@@ -83,7 +74,6 @@ class StudentResource {
     // Delete token from shared preferences
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
-    await sharedPreferences.setString('token', null);
+    await sharedPreferences.setString('token', '');
   }
-
 }

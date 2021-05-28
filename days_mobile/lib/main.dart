@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: themeLight(),
         // darkTheme: themeDark(),
-        initialRoute: 'load',
+        initialRoute: 'changePassword',
         onGenerateRoute: RouterHandler.router.generator,
       ),
     );

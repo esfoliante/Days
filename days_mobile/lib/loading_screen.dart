@@ -25,9 +25,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return _buildLoadingBar();
         }
-        _studentMob.setStudent(snapshot.data);
 
-        debugPrint(snapshot.data.toString());
+        _studentMob.setStudent(snapshot.data);
 
         return Observer(
           builder: (_) =>

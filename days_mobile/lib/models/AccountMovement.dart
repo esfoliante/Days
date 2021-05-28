@@ -1,26 +1,30 @@
 class AccountMovement {
   int id;
-  int userId;
-  Null studentId;
+  Null userId;
+  int studentId;
   int amount;
-  String transactionType;
+  String isDebt;
   String location;
+  String createdAt;
 
   AccountMovement(
       {this.id,
       this.userId,
       this.studentId,
       this.amount,
-      this.transactionType,
-      this.location,});
+      this.isDebt,
+      this.location,
+      this.createdAt,});
 
   AccountMovement.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['user_id'];
     studentId = json['student_id'];
     amount = json['amount'];
-    transactionType = json['transaction_type'];
+    isDebt = json['is_debt'];
     location = json['location'];
+    createdAt = json['created_at'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -29,9 +33,10 @@ class AccountMovement {
     data['user_id'] = this.userId;
     data['student_id'] = this.studentId;
     data['amount'] = this.amount;
-    data['transaction_type'] = this.transactionType;
+    data['is_debt'] = this.isDebt;
     data['location'] = this.location;
-    
+    data['created_at'] = this.createdAt;
+
     return data;
   }
 }

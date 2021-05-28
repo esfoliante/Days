@@ -29,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
     double height = MediaQuery.of(context).size.height;
 
     final StudentMob studentMob = Provider.of<StudentMob>(context);
-    StudentResource().getCurrentStudent().then((student) => {studentMob.setStudent(student)});
 
     return Scaffold(
       key: _scaffoldKey,
@@ -81,7 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     CardWidget(
                       name: "${studentMob.student.name}",
-                      processNumber: 30320,
+                      processNumber: studentMob.student.internalNumber == null
+                          ? studentMob.student.id
+                          : studentMob.student.internalNumber,
                     ),
                     SizedBox(
                       height: height * 0.04,
@@ -123,17 +124,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 20.0,
                     ),
-                    ActionCard(
+                    // ! Maybe a future feature, something to
+                    // ! take in account later
+                    /*ActionCard(
                       title: "Marcação de refeições",
                       subtitle: "",
                       isImportant: false,
                     ),
                     SizedBox(
                       height: 20.0,
-                    ),
+                    ),*/
                     ActionCard(
                       title: "Movimentos de conta",
-                      subtitle: "6.20€",
+                      subtitle: "${studentMob.student.transactionTotal}",
                       isImportant: true,
                       route: "cardMoviments",
                     ),

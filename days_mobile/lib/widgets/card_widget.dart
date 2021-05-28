@@ -51,12 +51,19 @@ class CardWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name.replaceAll(' ', '\n'),
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: width * 0.09,
-                      fontWeight: FontWeight.w700,
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: width * 0.4,
+                      maxHeight: height * 0.1,
+                    ),
+                    child: Text(
+                      name.replaceAll(' ', '\n'),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontSize: width * 0.09,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                   SizedBox(
