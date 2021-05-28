@@ -43,6 +43,7 @@
 	<false/>
 	<key>UIStatusBarHidden</key>
 	<true/>
-
+	<key>NFCReaderUsageDescription</key>
+	<string>...</string>
 </dict>
 </plist>
