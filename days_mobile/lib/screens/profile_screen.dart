@@ -1,7 +1,9 @@
+import 'package:days_mobile/stores/student.store.dart';
 import 'package:days_mobile/widgets/custom_appbar.dart';
 import 'package:days_mobile/widgets/profile_custom_appbar.dart';
 import 'package:days_mobile/widgets/profile_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({Key key}) : super(key: key);
@@ -15,6 +17,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final StudentMob studentMob = Provider.of<StudentMob>(context);
+
+    final String tutor = studentMob.student.tutor.name;
+    final String course = studentMob.student.course.name;
+
+    final dynamic limitation = studentMob.student.limitation;
+    final dynamic allergies = studentMob.student.allergies;
+
+    Widget _checkLimitation() {
+      if (limitation == null) return Container();
+
+      return Column(
+        children: [
+          SizedBox(
+            height: height * 0.04,
+          ),
+          ProfileItem(
+            title: 'Limitações',
+            content: '$limitation',
+          ),
+        ],
+      );
+    }
+
+    Widget _checkAllergies() {
+      if (allergies == null) return Container();
+
+      return Column(
+        children: [
+          SizedBox(
+            height: height * 0.04,
+          ),
+          ProfileItem(
+            title: 'Alergias',
+            content: '$allergies',
+          ),
+        ],
+      );
+    }
+    
+    String parseDate(String createdAt) {
+      int tIndex = createdAt.indexOf(' ');
+
+      return createdAt.substring(0, tIndex - 1);
+    }
 
     return DefaultTabController(
       length: 2,
@@ -58,35 +106,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           ProfileItem(
                             title: 'Nome',
-                            content: 'Miguel Ângelo Carvalho Ferreira',
+                            content: '${studentMob.student.name}',
                           ),
                           SizedBox(
                             height: height * 0.04,
                           ),
                           ProfileItem(
                             title: 'Curso',
-                            content: 'Informática e Tecnologias Multimédia',
+                            content: '$course',
                           ),
-                          SizedBox(
-                            height: height * 0.04,
-                          ),
-                          ProfileItem(
-                            title: 'Limitações',
-                            content: 'É ganda morcão',
-                          ),
-                          SizedBox(
-                            height: height * 0.04,
-                          ),
-                          ProfileItem(
-                            title: 'Alergias',
-                            content: 'Ácaros e pólen',
-                          ),
+                          _checkLimitation(),
+                          _checkAllergies(),
                           SizedBox(
                             height: height * 0.04,
                           ),
                           ProfileItem(
                             title: 'Contacto de emergência',
-                            content: '912345678',
+                            content: '${studentMob.student.emergencyContact}',
                           ),
                         ],
                       ),
@@ -123,35 +159,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           ProfileItem(
                             title: 'Email',
-                            content: 'miguel@days.com',
+                            content: '${studentMob.student.email}',
                           ),
                           SizedBox(
                             height: height * 0.04,
                           ),
                           ProfileItem(
                             title: 'Enc. de educação',
-                            content: 'Sónia Maria Carvalho Freitas',
+                            content: '$tutor',
                           ),
                           SizedBox(
                             height: height * 0.04,
                           ),
                           ProfileItem(
                             title: 'Cartão de cidadão',
-                            content: '123456789',
+                            content: '${studentMob.student.cc}',
                           ),
                           SizedBox(
                             height: height * 0.04,
                           ),
                           ProfileItem(
                             title: 'Morada',
-                            content: 'Rua lá do sítio',
+                            content: '${studentMob.student.residence}',
                           ),
                           SizedBox(
                             height: height * 0.04,
                           ),
                           ProfileItem(
-                            title: 'Aniversário',
-                            content: '02/03/2003',
+                            title: 'Data de nascimento',
+                            content: parseDate(studentMob.student.birthday),
                           ),
                         ],
                       ),

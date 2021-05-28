@@ -1,10 +1,11 @@
+import 'package:days_mobile/models/Course.dart';
+import 'package:days_mobile/models/Tutor.dart';
+
 class Student {
   int id;
   int internalNumber;
   String name;
   String email;
-  int tutorId;
-  int courseId;
   String limitation;
   String allergies;
   String emergencyContact;
@@ -13,14 +14,14 @@ class Student {
   String birthday;
   int firstLogin;
   String transactionTotal;
+  Tutor tutor;
+  Course course;
 
   Student({
     this.id,
     this.internalNumber,
     this.name,
     this.email,
-    this.tutorId,
-    this.courseId,
     this.limitation,
     this.allergies,
     this.emergencyContact,
@@ -29,6 +30,8 @@ class Student {
     this.birthday,
     this.firstLogin,
     this.transactionTotal,
+    this.tutor,
+    this.course,
   });
 
   Student.fromJson(Map<String, dynamic> json) {
@@ -36,8 +39,6 @@ class Student {
     internalNumber = json['internal_number'];
     name = json['name'];
     email = json['email'];
-    tutorId = json['tutor_id'];
-    courseId = json['course_id'];
     limitation = json['limitation'];
     allergies = json['allergies'];
     emergencyContact = json['emergency_contact'];
@@ -46,6 +47,8 @@ class Student {
     birthday = json['birthday'];
     firstLogin = json['first_login'];
     transactionTotal = json['transaction_total'];
+    tutor = Tutor.fromJson(json['tutor']);
+    course = Course.fromJson(json['course']);
   }
 
   Map<String, dynamic> toJson() {
@@ -54,8 +57,6 @@ class Student {
     data['internal_number'] = this.internalNumber;
     data['name'] = this.name;
     data['email'] = this.email;
-    data['tutor_id'] = this.tutorId;
-    data['course_id'] = this.courseId;
     data['limitation'] = this.limitation;
     data['allergies'] = this.allergies;
     data['emergency_contact'] = this.emergencyContact;
@@ -64,6 +65,8 @@ class Student {
     data['birthday'] = this.birthday;
     data['first_login'] = this.firstLogin;
     data['transaction_total'] = this.transactionTotal;
+    data['tutor'] = this.tutor.toJson();
+    data['course'] = this.course.toJson();
 
     return data;
   }
