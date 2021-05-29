@@ -30,18 +30,6 @@ class _CardMovimentsScreenState extends State<CardMovimentsScreen> {
       return createdAt.substring(0, tIndex - 1);
     }
 
-    Widget _buildTimeline(snapshot) {
-      snapshot.data.asMap().forEach((key, element) {
-        TimeLineChunk(
-          title: "${element.amount}€",
-          date: parseDate(element.createdAt),
-          isSpecial: element.isDebt == "1",
-          isFirst: key == 0,
-          isLast: key == snapshot.data.length - 1,
-        );
-      });
-    }
-
     Widget _buildLoadingBar() {
       return const Scaffold(
         body: Center(

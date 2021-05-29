@@ -29,6 +29,7 @@ class Student extends JsonResource
             'transaction_total' => $this->movements_sum,
             'tutor' => $this->tutor,
             'course' => $this->course,
+            'entrance' => $this->entrance,
         ];
     }
 }

@@ -82,4 +82,9 @@ class Student extends Model
 
         return $course;
     }
+
+    public function entrance()
+    {
+        return $this->hasMany(Entrance::class);
+    }
 }

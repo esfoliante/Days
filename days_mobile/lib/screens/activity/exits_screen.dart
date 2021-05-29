@@ -1,6 +1,8 @@
+import 'package:days_mobile/stores/student.store.dart';
 import 'package:days_mobile/widgets/custom_appbar.dart';
 import 'package:days_mobile/widgets/timeline_chunk_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ExitsScreen extends StatefulWidget {
   ExitsScreen({Key key}) : super(key: key);
@@ -14,6 +16,18 @@ class _ExitsScreenState extends State<ExitsScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final StudentMob studentMob = Provider.of<StudentMob>(context);
+    final entrances = studentMob.student.entrances;
+
+    String parseDate(String createdAt) {
+      int tIndex = createdAt.indexOf('T');
+      String date = createdAt.substring(0, tIndex - 1);
+      String time =
+          createdAt.substring(tIndex + 1, createdAt.lastIndexOf(':') - 1);
+
+      return "$time - $date";
+    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -29,36 +43,14 @@ class _ExitsScreenState extends State<ExitsScreen> {
               SizedBox(
                 height: height * 0.05,
               ),
-              TimeLineChunk(
-                title: "Saida",
-                date: "15:00 - 12/01/2021",
-                isSpecial: true,
-                isFirst: true,
-                isLast: false,
-              ),
-              for (int i = 0; i < 20; i++) ...[
+              for (var entrance in entrances.reversed)
                 TimeLineChunk(
-                  title: "Entrada",
-                  date: "08:00 - 12/01/2021",
-                  isSpecial: false,
-                  isFirst: false,
-                  isLast: false,
+                  title: entrance.actionType == "Entrada" ? 'Entrada' : "Saída",
+                  date: parseDate(entrance.createdAt),
+                  isSpecial: entrance.actionType == "Saída",
+                  isFirst: entrances.indexOf(entrance) == entrances.length - 1,
+                  isLast: entrances.indexOf(entrance) == 0,
                 ),
-                TimeLineChunk(
-                  title: "Saida",
-                  date: "15:00 - 12/01/2021",
-                  isSpecial: true,
-                  isFirst: false,
-                  isLast: false,
-                ),
-              ],
-              TimeLineChunk(
-                title: "Entrada",
-                date: "08:00 - 12/01/2021",
-                isSpecial: false,
-                isFirst: false,
-                isLast: true,
-              ),
             ],
           ),
         ),
