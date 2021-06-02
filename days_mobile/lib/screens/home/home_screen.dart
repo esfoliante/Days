@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flash/flash.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:provider/provider.dart';
-import 'package:nfc_in_flutter/nfc_in_flutter.dart';
+// import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -180,7 +180,7 @@ _enterSchool(BuildContext context) async {
 
   // ? First we will initiate our reading variable and set it to 
   // ? only read one value (in order to avoid an entrance and exit followed)
-  NDEFMessage message = await NFC.readNDEF(once: true).first;
+  // NDEFMessage message = await NFC.readNDEF(once: true).first;
 
   return showFlash(
     context: context,
