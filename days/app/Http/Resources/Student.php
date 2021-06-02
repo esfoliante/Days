@@ -30,6 +30,7 @@ class Student extends JsonResource
             'tutor' => $this->tutor,
             'course' => $this->course,
             'entrance' => $this->entrance,
+            'absences' => $this->absences,
         ];
     }
 }

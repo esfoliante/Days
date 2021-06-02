@@ -61,6 +61,11 @@ Route::get('students/{student}/total', [
     'indexTotal',
 ]);
 
+Route::get('students/{student}/absences', [
+    AbsencesController::class,
+    'indexByStudent',
+]);
+
 Route::get('students/student', [AuthController::class, 'currentStudent']);
 //});
 

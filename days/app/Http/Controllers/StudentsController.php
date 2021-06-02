@@ -92,4 +92,9 @@ class StudentsController extends Controller
     {
         return $student->tutor;
     }
+
+    public function showAbsences(Student $student)
+    {
+        return $student->tutor;
+    }
 }

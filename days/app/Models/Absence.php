@@ -9,14 +9,15 @@ class Absence extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'student_id',
-        'class_id',
-        'absence_date',
-    ];
+    protected $fillable = ['student_id', 'class_id', 'absence_date'];
 
-    public function student() {
+    public function student()
+    {
         return $this->belongsTo(Student::class);
     }
 
+    public function class()
+    {
+        return $this->belongsTo(ClassModel::class);
+    }
 }
