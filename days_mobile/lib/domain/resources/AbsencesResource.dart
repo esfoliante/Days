@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-import 'package:days_mobile/models/AccountMovement.dart';
+import 'package:days_mobile/models/Absence.dart';
 import 'package:days_mobile/stores/student.store.dart';
 import 'package:days_mobile/utils/config.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-class AccountMovementResource {
-  static Future<List<AccountMovement>> getMovements(context) async {
+class AbsencesResource {
+  static Future<List<Absence>> getAbsences(context) async {
     final StudentMob _studentMob = Provider.of<StudentMob>(context);
-    
+
     final response = await http.get(
-      Uri.parse('$base_url/students/${_studentMob.student.id}/movements'),
+      Uri.parse('$base_url/students/${_studentMob.student.id}/absences'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
@@ -23,19 +23,21 @@ class AccountMovementResource {
       throw Exception('Failed to get account movements.');
     }
 
-    List<dynamic> data = json.decode(response.body);
+    Map<String, dynamic> map = json.decode(response.body);
+    List<dynamic> data = map["data"];
 
-    List<AccountMovement> movements = [];
-    /*data.forEach((key, value) {
-      // ? Add our account movement to our array of movements
-      
-    });*/
-    print(data);
-  
+    print(map);
+
+    List<Absence> absences = [];
+
     data.forEach((element) {
-      movements.add(AccountMovement.fromJson(element));
+      absences.add(Absence.fromJson(element));
     });
 
-    return movements;
+    absences.forEach((element) {
+      print(element.className);
+    });
+
+    return absences;
   }
 }
