@@ -46,7 +46,7 @@ class _CardMovimentsScreenState extends State<CardMovimentsScreen> {
         ),
       ),
       body: FutureBuilder(
-          future: movements(),
+          future: AccountMovementResource.getMovements(context),
           builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return _buildLoadingBar();

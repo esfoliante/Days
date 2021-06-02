@@ -1,3 +1,4 @@
+import 'package:days_mobile/models/Absence.dart';
 import 'package:days_mobile/models/Course.dart';
 import 'package:days_mobile/models/Entrance.dart';
 import 'package:days_mobile/models/Tutor.dart';
