@@ -28,13 +28,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
         _studentMob.setStudent(snapshot.data);
 
+        print(_studentMob.student);
+
         return Observer(
           builder: (_) =>
               _studentMob.student == null ? LoginScreen() : HomeScreen(),
         );
       },
     );
-  
   }
 
   Widget _buildLoadingBar() {
@@ -44,5 +45,4 @@ class _LoadingScreenState extends State<LoadingScreen> {
       ),
     );
   }
-
 }

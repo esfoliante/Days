@@ -28,7 +28,7 @@ class StudentResource {
 
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
-    sharedPreferences.setString('token', data['token'] as String);
+    sharedPreferences.setString('token', data['token']);
 
     return Student.fromJson(data['student']);
   }
@@ -56,13 +56,13 @@ class StudentResource {
 
     Student student;
 
-    if (token == null) {
+    if (token == '') {
       return null;
     }
 
     try {
       student = await getStudent(token);
-      print("Current user check done");
+      print("Current student check done");
     } catch (e) {
       await sharedPreferences.setString('token', '');
     }
