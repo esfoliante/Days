@@ -1,6 +1,7 @@
 import 'package:days_mobile/models/Absence.dart';
 import 'package:days_mobile/models/Course.dart';
 import 'package:days_mobile/models/Entrance.dart';
+import 'package:days_mobile/models/Notice.dart';
 import 'package:days_mobile/models/Tutor.dart';
 
 class Student {
@@ -19,6 +20,7 @@ class Student {
   Tutor tutor;
   Course course;
   List<Entrance> entrances = new List<Entrance>();
+  List<Notice> notices = new List<Notice>();
 
   Student({
     this.id,
@@ -36,6 +38,7 @@ class Student {
     this.tutor,
     this.course,
     this.entrances,
+    this.notices,
   });
 
   Student.fromJson(Map<String, dynamic> json) {
@@ -54,8 +57,10 @@ class Student {
     tutor = Tutor.fromJson(json['tutor']);
     course = Course.fromJson(json['course']);
     List<dynamic> jsonEntrance = json['entrance'];
+    List<dynamic> jsonNotice = json['notices'];
 
     for (var entrance in jsonEntrance) entrances.add(Entrance.fromJson(entrance));
+    for (var notice in jsonNotice) notices.add(Notice.fromJson(notice));
   }
 
   Map<String, dynamic> toJson() {
@@ -75,6 +80,7 @@ class Student {
     data['tutor'] = this.tutor.toJson();
     data['course'] = this.course.toJson();
     data['entrance'] = this.entrances;
+    data['notices'] = this.notices;
 
     return data;
   }

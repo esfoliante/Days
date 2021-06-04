@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Http\Resources\NoticeResource;
 
 class Student extends Model
 {
@@ -91,5 +92,10 @@ class Student extends Model
     public function absences()
     {
         return $this->hasMany(Absence::class);
+    }
+
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
     }
 }

@@ -56,6 +56,8 @@ class InformationCard extends StatelessWidget {
                       ),
                       child: Text(
                         title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
                           fontSize: height * 0.024,
@@ -63,9 +65,6 @@ class InformationCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
                   ),
                   Text(
                     date,
@@ -84,6 +83,8 @@ class InformationCard extends StatelessWidget {
                   ),
                   child: Text(
                     content,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontSize: height * 0.018,
