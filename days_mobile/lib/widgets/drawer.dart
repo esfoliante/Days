@@ -39,7 +39,8 @@ class DrawerWidget extends StatelessWidget {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
-                _tab(context, "Marcação de Refeições", "candle"),
+                // ? Let's leave this here for another time, shall we?
+                /*_tab(context, "Marcação de Refeições", "candle"),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 20.0,
@@ -48,7 +49,7 @@ class DrawerWidget extends StatelessWidget {
                   child: Divider(
                     color: Theme.of(context).primaryColor,
                   ),
-                ),
+                ),*/
                 _tab(context, "Movimentos de conta", "cardMoviments"),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -69,7 +70,7 @@ class DrawerWidget extends StatelessWidget {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
-                _tab(context, "Ver perfil", "candle"),
+                _tab(context, "Ver perfil", "profile"),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 20.0,

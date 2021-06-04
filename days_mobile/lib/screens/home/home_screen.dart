@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       constraints: BoxConstraints(
                         minWidth: 170.0,
                       ),
-                      child: FlatButton(
+                      child: TextButton(
                         child: Text(
                           "ENTRADA NA ESCOLA",
                           style: TextStyle(
