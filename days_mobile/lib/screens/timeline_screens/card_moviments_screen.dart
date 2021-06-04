@@ -27,7 +27,7 @@ class _CardMovimentsScreenState extends State<CardMovimentsScreen> {
     String parseDate(String createdAt) {
       int tIndex = createdAt.indexOf('T');
 
-      return createdAt.substring(0, tIndex - 1);
+      return createdAt.substring(0, tIndex);
     }
 
     Widget _buildLoadingBar() {
@@ -59,13 +59,13 @@ class _CardMovimentsScreenState extends State<CardMovimentsScreen> {
                     SizedBox(
                       height: height * 0.05,
                     ),
-                    for (var element in snapshot.data)
+                    for (var element in snapshot.data.reversed)
                       TimeLineChunk(
                         title: element.isDebt == "1" ? "-${element.amount}€" : "${element.amount}€",
                         date: parseDate(element.createdAt),
                         isSpecial: element.isDebt == "1",
-                        isFirst: snapshot.data.indexOf(element) == 0,
-                        isLast: snapshot.data.indexOf(element) == snapshot.data.length - 1,
+                        isFirst: snapshot.data.indexOf(element) == snapshot.data.length - 1,
+                        isLast: snapshot.data.indexOf(element) == 0,
                       ),
                   ],
                 ),

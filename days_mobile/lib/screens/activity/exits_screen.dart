@@ -22,11 +22,11 @@ class _ExitsScreenState extends State<ExitsScreen> {
 
     String parseDate(String createdAt) {
       int tIndex = createdAt.indexOf('T');
-      String date = createdAt.substring(0, tIndex - 1);
+      String date = createdAt.substring(0, tIndex);
       String time =
-          createdAt.substring(tIndex + 1, createdAt.lastIndexOf(':') - 1);
+          createdAt.substring(tIndex + 1, createdAt.lastIndexOf(':'));
 
-      return "$time - $date";
+      return "$date , $time";
     }
 
     return Scaffold(
