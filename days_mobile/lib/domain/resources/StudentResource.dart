@@ -56,7 +56,7 @@ class StudentResource {
 
     Student student;
 
-    if (token == '') {
+    if (token.isEmpty) {
       return null;
     }
 

@@ -1,6 +1,9 @@
+import 'package:days_mobile/models/Notice.dart';
+import 'package:days_mobile/stores/student.store.dart';
 import 'package:days_mobile/widgets/custom_appbar.dart';
 import 'package:days_mobile/widgets/information_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ParticipationsScreen extends StatefulWidget {
   ParticipationsScreen({Key key}) : super(key: key);
@@ -14,6 +17,15 @@ class _ParticipationsScreenState extends State<ParticipationsScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final StudentMob studentMob = Provider.of<StudentMob>(context);
+    final List<Notice> notices = studentMob.student.notices;
+
+    String parseDate(String createdAt) {
+      int tIndex = createdAt.indexOf(' ');
+
+      return createdAt.substring(0, tIndex);
+    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -29,22 +41,16 @@ class _ParticipationsScreenState extends State<ParticipationsScreen> {
               SizedBox(
                 height: height * 0.05,
               ),
-              InformationCard(
-                title: "Palavrão na aula de Matemática",
-                date: "15/05/2021",
-                content: "- O aluno estava passado do clima e pronto, yah",
-              ),
-              SizedBox(
-                height: height * 0.023,
-              ),
-              InformationCard(
-                title: "Palavrão na aula de Português",
-                date: "16/05/2021",
-                content: "- O aluno estava passado do clima e pronto, yah",
-              ),
-              SizedBox(
-                height: height * 0.023,
-              ),
+              for(var notice in notices.reversed) ... [
+                InformationCard(
+                  title: notice.reason,
+                  date: parseDate(notice.occurrenceDate),
+                  content: notice.description,
+                ),
+                SizedBox(
+                  height: height * 0.023,
+                ),
+              ]
             ],
           ),
         ),
