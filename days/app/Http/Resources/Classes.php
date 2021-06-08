@@ -14,6 +14,13 @@ class Classes extends JsonResource
      */
     public function toArray($request)
     {
-        return ['name' => $this->name, 'course_id' => $this->course_id, 'year' => $this->year, 'user_id' => $this->user_id, 'student_id', => $this->student_id,];
+        return [
+            'name' => $this->name,
+            'course_id' => $this->course_id,
+            'year' => $this->year,
+            'user_id' => $this->user_id,
+            'student_id' => $this->student_id,
+            'assessments' => $this->assessments,
+        ];
     }
 }

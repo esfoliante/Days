@@ -16,4 +16,9 @@ class Assessment extends Model
         'assessment_date',
     ];
 
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
 }

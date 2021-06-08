@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Http\Resources\NoticeResource;
+use Illuminate\Support\Facades\DB;
 
 class Student extends Model
 {
@@ -19,6 +20,7 @@ class Student extends Model
         'password',
         'tutor_id',
         'course_id',
+        'class_id',
         'limitation',
         'allergies',
         'emergency_contact',
@@ -44,6 +46,11 @@ class Student extends Model
     public function entrances()
     {
         return $this->hasMany(Entrance::class);
+    }
+
+    public function class()
+    {
+        return $this->belongsTo(ClassModel::class, 'class_id');
     }
 
     public function accountMovements()
@@ -72,16 +79,12 @@ class Student extends Model
 
     public function tutor()
     {
-        $tutor = $this->belongsTo(User::class);
-
-        return $tutor;
+        return $this->belongsTo(User::class);
     }
 
     public function course()
     {
-        $course = $this->belongsTo(Course::class);
-
-        return $course;
+        return $this->belongsTo(Course::class);
     }
 
     public function entrance()
@@ -98,4 +101,5 @@ class Student extends Model
     {
         return $this->hasMany(Notice::class);
     }
+
 }

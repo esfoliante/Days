@@ -21,6 +21,7 @@ use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\AbsencesController;
 use App\Http\Controllers\CommunicationsController;
 use App\Http\Controllers\CommunicationStudentController;
+use App\Http\Controllers\StudentsClassController;
 use App\Http\Controllers\Auth\AuthController;
 
 //Route::middleware('auth:api')->group( function () {
@@ -44,6 +45,7 @@ Route::resources([
     'absences' => AbsencesController::class,
     'communications' => CommunicationsController::class,
     'communication-student' => CommunicationStudentController::class,
+    'students-class' => StudentsClassController::class,
 ]);
 
 Route::get('students/{student}/entrances', [
