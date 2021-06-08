@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClassModel extends Model
 {
-
     use HasFactory;
 
     protected $table = 'classes';
@@ -20,4 +19,8 @@ class ClassModel extends Model
         'student_id',
     ];
 
+    public function assessments()
+    {
+        return $this->hasMany(Assessment::class);
+    }
 }

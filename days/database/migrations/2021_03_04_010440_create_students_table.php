@@ -19,7 +19,10 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password')->default('');
-            $table->string('profile_picture')->default()->default('');
+            $table
+                ->string('profile_picture')
+                ->default()
+                ->default('');
             $table->foreignId('tutor_id')->constrained();
             $table->foreignId('course_id')->constrained();
             $table->string('limitation')->nullable();

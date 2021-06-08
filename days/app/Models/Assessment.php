@@ -15,5 +15,4 @@ class Assessment extends Model
         'contents',
         'assessment_date',
     ];
-
 }

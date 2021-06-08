@@ -19,7 +19,7 @@ class StudentsSeeder extends Seeder
         DB::table('students')->insert([
             'internal_number' => 1,
             'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
+            'email' => Str::random(10) . '@gmail.com',
             'profile_picture' => '',
             'tutor_id' => 1,
             'course_id' => 1,
