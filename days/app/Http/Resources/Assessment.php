@@ -15,12 +15,9 @@ class Assessment extends JsonResource
     {
         return [
             'id' => $this->id,
-            'class_id' => $this->class_id,
-            'subject_id' => $this->subject_id,
+            'subject' => $this->subject->name,
             'contents' => $this->contents,
             'assessment_date' => $this->assessment_date,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ];
     }
 }

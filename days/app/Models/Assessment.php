@@ -15,4 +15,10 @@ class Assessment extends Model
         'contents',
         'assessment_date',
     ];
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
 }

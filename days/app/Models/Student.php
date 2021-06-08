@@ -48,6 +48,11 @@ class Student extends Model
         return $this->hasMany(Entrance::class);
     }
 
+    public function class()
+    {
+        return $this->belongsTo(ClassModel::class, 'class_id');
+    }
+
     public function accountMovements()
     {
         return $this->hasMany(AccountMovement::class);
@@ -74,16 +79,12 @@ class Student extends Model
 
     public function tutor()
     {
-        $tutor = $this->belongsTo(User::class);
-
-        return $tutor;
+        return $this->belongsTo(User::class);
     }
 
     public function course()
     {
-        $course = $this->belongsTo(Course::class);
-
-        return $course;
+        return $this->belongsTo(Course::class);
     }
 
     public function entrance()
@@ -101,8 +102,4 @@ class Student extends Model
         return $this->hasMany(Notice::class);
     }
 
-    public function class()
-    {
-        return $this->belongsTo(ClassModel::class);
-    }
 }

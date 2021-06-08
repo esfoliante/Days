@@ -27,10 +27,8 @@ class AbsencesController extends Controller
         return $absence;
     }
 
-    public function show($id)
+    public function show(Absence $absence)
     {
-        $absence = Absence::findOrFail($id);
-
         return $absence;
     }
 

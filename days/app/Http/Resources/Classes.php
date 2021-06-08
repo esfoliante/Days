@@ -19,7 +19,7 @@ class Classes extends JsonResource
             'course_id' => $this->course_id,
             'year' => $this->year,
             'user_id' => $this->user_id,
-            'student_id' => $this->user_id,
+            'student_id' => $this->student_id,
             'assessments' => $this->assessments,
         ];
     }

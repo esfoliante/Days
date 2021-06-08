@@ -31,6 +31,7 @@ class CreateStudent extends FormRequest
             'profile_picture' => 'string|nullable',
             'tutor_id' => 'required|integer|exists:tutors,id',
             'course_id' => 'required|integer|exists:courses,id',
+            'class_id' => 'required|integer|exists:classes,id',
             'limitation' => 'string|nullable|max:255',
             'allergies' => 'string|nullable|max:255',
             'emergency_contact' => 'required|string',
