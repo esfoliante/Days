@@ -33,6 +33,7 @@ class Student extends JsonResource
             'absences' => $this->absences,
             'notices' => $this->notices,
             'assessments' => new AssessmentCollection($this->class->assessments) ?? [],
+            'communications' => $this->communications
         ];
     }
 }

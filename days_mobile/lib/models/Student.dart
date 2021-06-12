@@ -1,5 +1,6 @@
 import 'package:days_mobile/models/Absence.dart';
 import 'package:days_mobile/models/Assessment.dart';
+import 'package:days_mobile/models/Communication.dart';
 import 'package:days_mobile/models/Course.dart';
 import 'package:days_mobile/models/Entrance.dart';
 import 'package:days_mobile/models/Notice.dart';
@@ -23,6 +24,7 @@ class Student {
   List<Entrance> entrances = new List<Entrance>();
   List<Notice> notices = new List<Notice>();
   List<Assessment> assessments = new List<Assessment>();
+  List<Communication> communications = new List<Communication>();
 
   Student({
     this.id,
@@ -42,6 +44,7 @@ class Student {
     this.entrances,
     this.notices,
     this.assessments,
+    this.communications
   });
 
   Student.fromJson(Map<String, dynamic> json) {
@@ -62,12 +65,15 @@ class Student {
     List<dynamic> jsonEntrance = json['entrance'];
     List<dynamic> jsonNotice = json['notices'];
     List<dynamic> jsonAssessments = json['assessments']['data'];
+    List<dynamic> jsonCommunications = json['communications'];
 
     for (var entrance in jsonEntrance)
       entrances.add(Entrance.fromJson(entrance));
     for (var notice in jsonNotice) notices.add(Notice.fromJson(notice));
     for (var assessment in jsonAssessments)
       assessments.add(Assessment.fromJson(assessment));
+    for (var communication in jsonCommunications)
+      communications.add(Communication.fromJson(communication));
   }
 
   Map<String, dynamic> toJson() {
@@ -89,6 +95,7 @@ class Student {
     data['entrance'] = this.entrances;
     data['notices'] = this.notices;
     data['assessments'] = this.assessments;
+    data['communications'] = this.communications;
 
     return data;
   }

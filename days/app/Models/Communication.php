@@ -15,4 +15,9 @@ class Communication extends Model
         'content',
     ];
 
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
 }

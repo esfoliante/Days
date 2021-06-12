@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Http\Resources\NoticeResource;
 use Illuminate\Support\Facades\DB;
 
-class Student extends Model
+class Student extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
@@ -100,6 +101,11 @@ class Student extends Model
     public function notices()
     {
         return $this->hasMany(Notice::class);
+    }
+
+    public function communications()
+    {
+        return $this->belongsToMany(Communication::class);
     }
 
 }

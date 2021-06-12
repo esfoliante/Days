@@ -1,10 +1,16 @@
+import 'package:days_mobile/models/Communication.dart';
+import 'package:days_mobile/stores/student.store.dart';
 import 'package:days_mobile/widgets/custom_appbar.dart';
 import 'package:days_mobile/widgets/information_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CommunicationScreen extends StatefulWidget {
+  final int id;
+
   CommunicationScreen({
     Key key,
+    @required int this.id,
   }) : super(key: key);
 
   @override
@@ -16,6 +22,25 @@ class _CommunicationScreenState extends State<CommunicationScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    Communication myCommunication;
+
+    String parseDate(String createdAt) {
+      int tIndex = createdAt.indexOf('T');
+
+      return createdAt.substring(0, tIndex);
+    }
+
+    final StudentMob studentMob = Provider.of<StudentMob>(context);
+    final List<Communication> communications =
+        studentMob.student.communications;
+
+    // ? For you, young developer, reading this... I know this isn't the best way
+    // ? but I am running out of time
+    for (var communication in communications) {
+      if (communication.id == widget.id)
+        myCommunication = communication;
+    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -38,19 +63,25 @@ class _CommunicationScreenState extends State<CommunicationScreen> {
                 ),
                 Row(
                   children: [
-                    Text(
-                      "Comunicado aos pais",
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w700,
+                    Container(
+                      constraints: BoxConstraints(
+                        maxWidth: width * 0.67,
+                      ),
+                      child: Text(
+                        myCommunication.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: 10.0,
                     ),
                     Text(
-                      "12-03-2021",
+                      parseDate(myCommunication.createdAt),
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontSize: 15.0,
@@ -61,10 +92,12 @@ class _CommunicationScreenState extends State<CommunicationScreen> {
                 SizedBox(
                   height: 40.0,
                 ),
-                Text(
-                  "Quando sentia na casa a voz de rezas, fugia, ia para o fundo da quinta, sob as trepadeiras do mirante, ler o seu Voltaire: ou então partia a desabafar com o seu velho amigo, o coronel Sequeira, que vivia numa quinta a Queluz.",
-                  style: TextStyle(),
-                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    myCommunication.content,
+                  ),
+                )
               ],
             ),
           ),
