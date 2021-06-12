@@ -24,29 +24,28 @@ use App\Http\Controllers\CommunicationStudentController;
 use App\Http\Controllers\StudentsClassController;
 use App\Http\Controllers\Auth\AuthController;
 
-//Route::middleware('auth:api')->group( function () {
-Route::resources([
-    'users' => UserController::class,
-    'tutors' => TutorsController::class,
-    'courses' => CoursesController::class,
-    'students' => StudentsController::class,
-    'subjects' => SubjectsController::class,
-    'roles' => RolesController::class,
-    'entrances' => EntrancesController::class,
-    'classrooms' => ClassroomsController::class,
-    'classes' => ClassesController::class,
-    'notices' => NoticesController::class,
-    'parents' => ParentsController::class,
-    'account-movements' => AccountMovementsController::class,
-    'meetings' => MeetingsController::class,
-    'marks' => MarksController::class,
-    'assessments' => AssessmentsController::class,
-    'schedule' => SchedulesController::class,
-    'absences' => AbsencesController::class,
-    'communications' => CommunicationsController::class,
-    'communication-student' => CommunicationStudentController::class,
-    'students-class' => StudentsClassController::class,
-]);
+Route::middleware('auth:api')->group( function () {
+    Route::resources([
+        'users' => UserController::class,
+        'tutors' => TutorsController::class,
+        'courses' => CoursesController::class,
+        'subjects' => SubjectsController::class,
+        'roles' => RolesController::class,
+        'entrances' => EntrancesController::class,
+        'classrooms' => ClassroomsController::class,
+        'classes' => ClassesController::class,
+        'notices' => NoticesController::class,
+        'parents' => ParentsController::class,
+        'account-movements' => AccountMovementsController::class,
+        'meetings' => MeetingsController::class,
+        'marks' => MarksController::class,
+        'assessments' => AssessmentsController::class,
+        'schedule' => SchedulesController::class,
+        'absences' => AbsencesController::class,
+        'communications' => CommunicationsController::class,
+        'communication-student' => CommunicationStudentController::class,
+        'students-class' => StudentsClassController::class,
+    ]);
 
 Route::get('students/{student}/entrances', [
     StudentsController::class,
@@ -69,7 +68,9 @@ Route::get('students/{student}/absences', [
 ]);
 
 Route::get('students/student', [AuthController::class, 'currentStudent']);
-//});
+});
+
+Route::resource('students', StudentsController::class);
 
 Route::prefix('login')->group(function () {
     Route::post('student', [AuthController::class, 'loginStudent'])->name(
@@ -79,6 +80,7 @@ Route::prefix('login')->group(function () {
         'auth.loginUser'
     );
 });
+
 
 Route::post('logout', [AuthController::class, 'logout'])
     ->middleware('auth:api')

@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
-    
+
     public function loginStudent(LoginRequest $request)
     {
         $data = $request->validated();
@@ -57,7 +57,7 @@ class AuthController extends Controller
 
     public function currentStudent()
     {
-        return new \App\Http\Resources\Student(auth()->student());
+        return new \App\Http\Resources\Student(auth()->user());
     }
 
 }

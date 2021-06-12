@@ -68,7 +68,7 @@ class StudentsController extends Controller
     {
         // We're going to generate a 15 characters password
         // in order to be secure and as random as possible
-        $password = Str::random(15);
+        $password = Str::random(8);
 
         return $password;
     }

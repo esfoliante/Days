@@ -11,14 +11,16 @@ class CommunicationsController extends Controller
 
     public function index()
     {
-        return Communication::all();
+       return auth()->user()->communications;
     }
 
     public function store(CreateCommunication $request)
     {
-        
+
         $data = $request->validated();
         $communication = Communication::create($data);
+
+        $communication->students()->attach($data['students']);
 
         return $communication;
 
@@ -31,7 +33,7 @@ class CommunicationsController extends Controller
 
     public function update(Request $request, $id)
     {
-        
+
         $communication = Communication::findOrFail($id);
         $communication->update($request->all());
 
@@ -41,7 +43,7 @@ class CommunicationsController extends Controller
 
     public function destroy($id)
     {
-        
+
         $communication = Communication::findOrFail($id);
         $communication->delete();
 
