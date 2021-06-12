@@ -56,7 +56,7 @@ class CommunicationCard extends StatelessWidget {
                       ),
                       child: Container(
                         constraints: BoxConstraints(
-                          maxWidth: width * 0.46,
+                          maxWidth: width * 0.43,
                         ),
                         child: Text(
                           title,
@@ -86,11 +86,17 @@ class CommunicationCard extends StatelessWidget {
                       top: 2.0,
                       bottom: 20.0,
                     ),
-                    child: Text(
-                      content,
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: height * 0.018,
+                    child: Container(
+                      constraints: BoxConstraints(
+                        maxWidth: width,
+                      ),
+                      child: Text(
+                        content,
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: height * 0.018,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),

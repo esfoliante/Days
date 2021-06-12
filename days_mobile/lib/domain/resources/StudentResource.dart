@@ -34,19 +34,23 @@ class StudentResource {
   }
 
   Future<Student> getStudent(String token) async {
-    final response = await http.post(
+    final response = await http.get(
       Uri.parse('$base_url/students/student'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
       },
-    ) as Map<String, dynamic>;
+    ) ;
 
-    if (response['statusCode'] != 200) {
+        Map<String, dynamic> data = json.decode(response.body);
+
+
+    if (response.statusCode != 200) {
       throw Exception('Failed to login user.');
     }
 
-    return Student.fromJson(response);
+    return Student.fromJson(data['data']);
   }
 
   Future<Student> getCurrentStudent() async {

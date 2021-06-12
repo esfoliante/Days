@@ -80,7 +80,7 @@ class RouterHandler {
 
   static final Handler _communicationScreen = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
-          CommunicationScreen());
+          CommunicationScreen(id: int.parse(params["id"][0].toString())));
 
   static final Handler _profileScreen = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
@@ -152,7 +152,7 @@ class RouterHandler {
       handler: _communicationsScreen,
     );
     router.define(
-      'communication',
+      'communication/:id',
       handler: _communicationScreen,
     );
     router.define(
