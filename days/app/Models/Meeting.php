@@ -16,4 +16,9 @@ class Meeting extends Model
         'meeting_date',
     ];
 
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
 }

@@ -1,6 +1,8 @@
+import 'package:days_mobile/stores/student.store.dart';
 import 'package:days_mobile/widgets/custom_appbar.dart';
 import 'package:days_mobile/widgets/information_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MeetingsScreen extends StatefulWidget {
   MeetingsScreen({Key key}) : super(key: key);
@@ -14,6 +16,16 @@ class _MeetingsScreenState extends State<MeetingsScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final StudentMob studentMob = Provider.of<StudentMob>(context);
+    final meetings = studentMob.student.meetings;
+
+    String parseDate(String createdAt) {
+      int tIndex = createdAt.indexOf(' ');
+      String date = createdAt.substring(0, tIndex);
+
+      return "$date";
+    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -29,24 +41,16 @@ class _MeetingsScreenState extends State<MeetingsScreen> {
               SizedBox(
                 height: height * 0.05,
               ),
-              InformationCard(
-                title: "Reunião de entrega das notas",
-                date: "12/05/2021",
-                content:
-                    "- Entrega das notas\n- Considerações sobre os alunos\n",
-              ),
-              SizedBox(
-                height: height * 0.023,
-              ),
-              InformationCard(
-                title: "Reunião de entrega das notas",
-                date: "12/05/2021",
-                content:
-                    "- Entrega das notas\n- Considerações sobre os alunos\n",
-              ),
-              SizedBox(
-                height: height * 0.023,
-              ),
+              for(var meeting in meetings) ... [
+                InformationCard(
+                  title: meeting.title,
+                  date: parseDate(meeting.meetingDate),
+                  content: meeting.content
+                ),
+                SizedBox(
+                  height: height * 0.023,
+                ),
+              ],
             ],
           ),
         ),

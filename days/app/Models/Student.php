@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Http\Resources\NoticeResource;
 use Illuminate\Support\Facades\DB;
+use function Symfony\Component\Translation\t;
 
 class Student extends Authenticatable
 {
@@ -106,6 +107,11 @@ class Student extends Authenticatable
     public function communications()
     {
         return $this->belongsToMany(Communication::class);
+    }
+
+    public function meetings()
+    {
+        return $this->belongsToMany(Meeting::class);
     }
 
 }
