@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCommunicationStudent;
+use App\Http\Requests\CreateMeetingStudent;
+use App\Models\Meeting;
+use App\Models\MeetingStudent;
+use App\Models\Notice;
 use Illuminate\Http\Request;
 
 class MeetingStudentController extends Controller
@@ -9,11 +14,11 @@ class MeetingStudentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return MeetingStudent[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return MeetingStudent::all();
     }
 
     /**
@@ -22,9 +27,14 @@ class MeetingStudentController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMeetingStudent $request)
     {
-        //
+
+        $data = $request->validated();
+        $meetingStudent = MeetingStudent::create($data);
+
+        return $meetingStudent;
+
     }
 
     /**
@@ -35,7 +45,7 @@ class MeetingStudentController extends Controller
      */
     public function show($id)
     {
-        //
+        return MeetingStudent::findOrFail($id);
     }
 
     /**
@@ -47,7 +57,12 @@ class MeetingStudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $meetingStudent = MeetingStudent::findOrFail($id);
+        $meetingStudent->update($request->all());
+
+        return $meetingStudent;
+
     }
 
     /**
@@ -58,6 +73,9 @@ class MeetingStudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $meetingStudent = MeetingStudent::findOrFail($id);
+        $meetingStudent->delete();
+
     }
 }

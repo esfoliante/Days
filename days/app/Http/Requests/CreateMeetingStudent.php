@@ -9,7 +9,8 @@ class CreateMeetingStudent extends FormRequest
     public function rules()
     {
         return [
-            //
+            'meeting_id' => 'required|integer|exists:meetings,id',
+            'student_id' => 'required|integer|exists:students,id'
         ];
     }
 

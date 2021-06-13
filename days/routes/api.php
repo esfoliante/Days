@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MeetingStudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -45,6 +46,7 @@ Route::middleware('auth:api')->group( function () {
         'communications' => CommunicationsController::class,
         'communication-student' => CommunicationStudentController::class,
         'students-class' => StudentsClassController::class,
+        'meeting-student' => MeetingStudentController::class,
     ]);
 
 Route::get('students/{student}/entrances', [

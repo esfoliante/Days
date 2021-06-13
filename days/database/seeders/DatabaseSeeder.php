@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             CommunicationsSeeder::class,
             CommunicationStudentSeeder::class,
             AccountMovementsSeeder::class,
+            MeetingStudentSeeder::class,
         ]);
     }
 }
