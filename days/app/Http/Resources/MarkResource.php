@@ -15,8 +15,7 @@ class MarkResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'student_id' => $this->student_id,
-            'subject_id' => $this->subject_id,
+            'subject' => $this->subject->name,
             'year' => $this->year,
             'term' => $this->term,
             'mark' => $this->mark,

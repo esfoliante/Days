@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\MarkCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -112,6 +113,11 @@ class Student extends Authenticatable
     public function meetings()
     {
         return $this->belongsToMany(Meeting::class);
+    }
+
+    public function marks()
+    {
+        return $this->hasMany(Mark::class);
     }
 
 }
