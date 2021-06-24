@@ -18,4 +18,9 @@ class Mark extends Model
         'mark',
     ];
 
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
 }

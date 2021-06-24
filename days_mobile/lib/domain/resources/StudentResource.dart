@@ -41,10 +41,9 @@ class StudentResource {
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + token
       },
-    ) ;
+    );
 
-        Map<String, dynamic> data = json.decode(response.body);
-
+    Map<String, dynamic> data = json.decode(response.body);
 
     if (response.statusCode != 200) {
       throw Exception('Failed to login user.');

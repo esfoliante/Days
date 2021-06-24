@@ -3,6 +3,7 @@ import 'package:days_mobile/models/Assessment.dart';
 import 'package:days_mobile/models/Communication.dart';
 import 'package:days_mobile/models/Course.dart';
 import 'package:days_mobile/models/Entrance.dart';
+import 'package:days_mobile/models/Mark.dart';
 import 'package:days_mobile/models/Meeting.dart';
 import 'package:days_mobile/models/Notice.dart';
 import 'package:days_mobile/models/Tutor.dart';
