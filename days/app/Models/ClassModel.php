@@ -31,4 +31,9 @@ class ClassModel extends Model
         return $this->belongsTo(Subject::class)->name;
     }
 
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class, 'class_id');
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class Student extends JsonResource
 {
@@ -35,6 +36,7 @@ class Student extends JsonResource
             'assessments' => new AssessmentCollection($this->class->assessments) ?? [],
             'communications' => $this->communications,
             'meetings' => $this->meetings,
+            'schedule' => new ScheduleCollection($this->class->schedule) ?? [],
         ];
     }
 }

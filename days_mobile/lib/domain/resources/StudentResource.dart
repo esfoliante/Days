@@ -35,7 +35,7 @@ class StudentResource {
 
   Future<Student> getStudent(String token) async {
     final response = await http.get(
-      Uri.parse('$base_url/students/student'),
+      Uri.parse('http://$base_url/students/student'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
