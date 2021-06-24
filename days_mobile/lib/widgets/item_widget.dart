@@ -43,11 +43,15 @@ class ItemWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                title,
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 20.0,
+              Container(
+                constraints: BoxConstraints(maxWidth: width * 0.40),
+                child: Text(
+                  title,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 20.0,
+                  ),
                 ),
               ),
               Text(
