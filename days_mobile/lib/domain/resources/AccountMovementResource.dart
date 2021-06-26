@@ -16,7 +16,7 @@ class AccountMovementResource {
     String token = sharedPreferences.getString('token');
 
     final response = await http.get(
-      Uri.parse('$base_url/students/${_studentMob.student.id}/movements'),
+      Uri.parse('http://$base_url/students/${_studentMob.student.id}/movements'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
