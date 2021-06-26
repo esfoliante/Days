@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:days_mobile/domain/resources/StudentResource.dart';
+import 'package:days_mobile/models/Entrance.dart';
+import 'package:days_mobile/models/Student.dart';
 import 'package:days_mobile/stores/student.store.dart';
+import 'package:days_mobile/utils/config.dart';
 import 'package:days_mobile/widgets/action_card_widget.dart';
 import 'package:days_mobile/widgets/card_widget.dart';
 import 'package:days_mobile/widgets/drawer.dart';
@@ -7,7 +12,12 @@ import 'package:flutter/material.dart';
 import 'package:flash/flash.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:provider/provider.dart';
-// import 'package:nfc_in_flutter/nfc_in_flutter.dart';
+import 'package:animated_check/animated_check.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vibration/vibration.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -109,7 +119,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         onPressed: () async {
-                          _enterSchool(context);
+                          bool isAvailable = true;
+
+                          if (isAvailable)
+                            _enterSchool(context);
+                          else
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "Este dispositivo não suporta NFC!",
+                                ),
+                              ),
+                            );
                         },
                       ),
                     ),
@@ -178,9 +199,50 @@ _enterSchool(BuildContext context) async {
   double height = MediaQuery.of(context).size.height;
   double width = MediaQuery.of(context).size.width;
 
-  // ? First we will initiate our reading variable and set it to 
-  // ? only read one value (in order to avoid an entrance and exit followed)
-  // NDEFMessage message = await NFC.readNDEF(once: true).first;
+  String parseText(String text) {
+    return text.substring(7, text.length);
+  }
+
+  String _checkActionType() {
+    final StudentMob _studentMob =
+        Provider.of<StudentMob>(context, listen: false);
+    final List<Entrance> entrances = _studentMob.student.entrances;
+
+    if (entrances.last.actionType == "Saída") return 'Entrada';
+
+    return 'Saída';
+  }
+
+  Future<void> checkEntrance(String data) async {
+    final StudentMob _studentMob =
+        Provider.of<StudentMob>(context, listen: false);
+
+    Student student = await StudentResource().getCurrentStudent();
+    _studentMob.setStudent(student);
+
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    String token = sharedPreferences.getString('token');
+
+    final response = await http.post(
+      Uri.parse('http://$base_url/entrances'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: jsonEncode(<String, dynamic>{
+        'student_id': _studentMob.student.id,
+        'action_type': _checkActionType(),
+      }),
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode != 201) {
+      throw Exception('Failed to register entrance.');
+    }
+  }
 
   return showFlash(
     context: context,
@@ -198,7 +260,22 @@ _enterSchool(BuildContext context) async {
           borderRadius: BorderRadius.circular(
             20.0,
           ),
-          onTap: () => debugPrint("Hello world"),
+          onTap: () {
+            Vibration.vibrate(duration: 200);
+            FlutterNfcReader.read().then((response) {
+              String data = parseText(response.content);
+              print(data);
+
+              if (data == "days.test/checkEntrance") {
+                checkEntrance(data);
+                controller.dismiss();
+                _checkedAnimation(context);
+              } else {
+                controller.dismiss();
+                _failedEntrance(context);
+              }
+            });
+          },
           child: Container(
             height: height,
             width: width,
@@ -243,7 +320,175 @@ _enterSchool(BuildContext context) async {
                     right: 20.0,
                   ),
                   child: Text(
-                    "Passa o teu telemóvel na máquina para poderes entrar ou sair da escola",
+                    "Clica na zona preta e passa o teu telemóvel na máquina para poderes entrar ou sair da escola",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+_checkedAnimation(BuildContext context) async {
+  double height = MediaQuery.of(context).size.height;
+  double width = MediaQuery.of(context).size.width;
+
+  return showFlash(
+    context: context,
+    duration: Duration(
+      minutes: 1,
+    ),
+    builder: (context, controller) {
+      return Padding(
+        padding: const EdgeInsets.all(
+          20.0,
+        ),
+        child: Flash.dialog(
+          controller: controller,
+          backgroundColor: Colors.black.withOpacity(0.9),
+          borderRadius: BorderRadius.circular(
+            20.0,
+          ),
+          onTap: () => controller.dismiss(),
+          child: Container(
+            height: height,
+            width: width,
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: height * 0.01,
+                      left: width * 0.02,
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.close, color: Colors.white),
+                      onPressed: () => controller.dismiss(),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: height * 0.18,
+                ),
+                DottedBorder(
+                  borderType: BorderType.RRect,
+                  radius: Radius.circular(20),
+                  color: Colors.greenAccent,
+                  strokeWidth: 3,
+                  // ? This dashed pattern is what keeps the gaps
+                  // ? between the dashes of the square
+                  dashPattern: [12, 8],
+                  child: Container(
+                    height: height * 0.2,
+                    width: width * 0.43,
+                    color: Colors.transparent,
+                  ),
+                ),
+                SizedBox(
+                  height: height * 0.1,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0,
+                  ),
+                  child: Text(
+                    "A entrada / saída da escola foi validada!",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+_failedEntrance(BuildContext context) async {
+  double height = MediaQuery.of(context).size.height;
+  double width = MediaQuery.of(context).size.width;
+
+  Vibration.vibrate(duration: 500);
+
+  return showFlash(
+    context: context,
+    duration: Duration(
+      minutes: 1,
+    ),
+    builder: (context, controller) {
+      return Padding(
+        padding: const EdgeInsets.all(
+          20.0,
+        ),
+        child: Flash.dialog(
+          controller: controller,
+          backgroundColor: Colors.black.withOpacity(0.9),
+          borderRadius: BorderRadius.circular(
+            20.0,
+          ),
+          onTap: () => controller.dismiss(),
+          child: Container(
+            height: height,
+            width: width,
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: height * 0.01,
+                      left: width * 0.02,
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.close, color: Colors.white),
+                      onPressed: () => controller.dismiss(),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: height * 0.18,
+                ),
+                DottedBorder(
+                  borderType: BorderType.RRect,
+                  radius: Radius.circular(20),
+                  color: Colors.red,
+                  strokeWidth: 3,
+                  // ? This dashed pattern is what keeps the gaps
+                  // ? between the dashes of the square
+                  dashPattern: [12, 8],
+                  child: Container(
+                    height: height * 0.2,
+                    width: width * 0.43,
+                    color: Colors.transparent,
+                  ),
+                ),
+                SizedBox(
+                  height: height * 0.1,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0,
+                  ),
+                  child: Text(
+                    "O código NFC é inválido!",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,

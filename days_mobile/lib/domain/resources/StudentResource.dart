@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class StudentResource {
   static Future<Student> login(String email, String password) async {
     final response = await http.post(
-      Uri.parse('$base_url/login/student'),
+      Uri.parse('http://$base_url/login/student'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
