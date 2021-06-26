@@ -35,16 +35,15 @@ class StudentResource {
 
   Future<Student> getStudent(String token) async {
     final response = await http.get(
-      Uri.parse('$base_url/students/student'),
+      Uri.parse('http://$base_url/students/student'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + token
       },
-    ) ;
+    );
 
-        Map<String, dynamic> data = json.decode(response.body);
-
+    Map<String, dynamic> data = json.decode(response.body);
 
     if (response.statusCode != 200) {
       throw Exception('Failed to login user.');

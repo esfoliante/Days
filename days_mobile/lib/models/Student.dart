@@ -3,8 +3,10 @@ import 'package:days_mobile/models/Assessment.dart';
 import 'package:days_mobile/models/Communication.dart';
 import 'package:days_mobile/models/Course.dart';
 import 'package:days_mobile/models/Entrance.dart';
+import 'package:days_mobile/models/Mark.dart';
 import 'package:days_mobile/models/Meeting.dart';
 import 'package:days_mobile/models/Notice.dart';
+import 'package:days_mobile/models/Schedule.dart';
 import 'package:days_mobile/models/Tutor.dart';
 
 class Student {
@@ -27,6 +29,7 @@ class Student {
   List<Assessment> assessments = new List<Assessment>();
   List<Communication> communications = new List<Communication>();
   List<Meeting> meetings = new List<Meeting>();
+  List<Schedule> schedules = new List<Schedule>();
 
   Student({
     this.id,
@@ -48,6 +51,7 @@ class Student {
     this.assessments,
     this.communications,
     this.meetings,
+    this.schedules,
   });
 
   Student.fromJson(Map<String, dynamic> json) {
@@ -70,6 +74,8 @@ class Student {
     List<dynamic> jsonAssessments = json['assessments']['data'];
     List<dynamic> jsonCommunications = json['communications'];
     List<dynamic> jsonMeetings = json['meetings'];
+    Map<String, dynamic> mapSchedule = json['schedule'];
+    List<dynamic> jsonSchedule = mapSchedule['data'];
 
     for (var entrance in jsonEntrance)
       entrances.add(Entrance.fromJson(entrance));
@@ -78,8 +84,8 @@ class Student {
       assessments.add(Assessment.fromJson(assessment));
     for (var communication in jsonCommunications)
       communications.add(Communication.fromJson(communication));
-    for (var meeting in jsonMeetings)
-      meetings.add(Meeting.fromJson(meeting));
+    for (var meeting in jsonMeetings) meetings.add(Meeting.fromJson(meeting));
+    for (var schedule in jsonSchedule) schedules.add(Schedule.fromJson(schedule));
   }
 
   Map<String, dynamic> toJson() {
@@ -103,6 +109,7 @@ class Student {
     data['assessments'] = this.assessments;
     data['communications'] = this.communications;
     data['meetings'] = this.meetings;
+    data['schedule'] = this.schedules;
 
     return data;
   }
