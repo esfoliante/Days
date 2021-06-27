@@ -45,6 +45,12 @@ return [
             'provider' => 'students',
             'hash' => false,
         ],
+
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*

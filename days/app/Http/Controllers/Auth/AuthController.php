@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('API Grant')->accessToken;
 
-        return response()->json(['token' => $token, 'user' => new \App\Http\Resources\User($user)]);
+        return response()->json(['token' => $token, 'user' => new \App\Http\Resources\UserResource($user)]);
     }
 
     public function logout(Request $request)
@@ -50,12 +50,12 @@ class AuthController extends Controller
 
     }
 
-    public function currentUser()
+    public function currentUser(): \App\Http\Resources\UserResource
     {
-        return new \App\Http\Resources\User(auth()->user());
+        return new \App\Http\Resources\UserResource(auth()->user());
     }
 
-    public function currentStudent()
+    public function currentStudent(): \App\Http\Resources\Student
     {
         return new \App\Http\Resources\Student(auth()->user());
     }

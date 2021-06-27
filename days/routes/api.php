@@ -49,27 +49,28 @@ Route::middleware('auth:api')->group( function () {
         'meeting-student' => MeetingStudentController::class,
     ]);
 
-Route::get('students/{student}/entrances', [
-    StudentsController::class,
-    'indexEntrances',
-]);
+    Route::get('students/{student}/entrances', [
+        StudentsController::class,
+        'indexEntrances',
+    ]);
 
-Route::get('students/{student}/movements', [
-    StudentsController::class,
-    'accountMovements',
-]);
+    Route::get('students/{student}/movements', [
+        StudentsController::class,
+        'accountMovements',
+    ]);
 
-Route::get('students/{student}/total', [
-    StudentsController::class,
-    'indexTotal',
-]);
+    Route::get('students/{student}/total', [
+        StudentsController::class,
+        'indexTotal',
+    ]);
 
-Route::get('students/{student}/absences', [
-    AbsencesController::class,
-    'indexByStudent',
-]);
+    Route::get('students/{student}/absences', [
+        AbsencesController::class,
+        'indexByStudent',
+    ]);
 
-Route::get('students/student', [AuthController::class, 'currentStudent']);
+    Route::get('students/student', [AuthController::class, 'currentStudent']);
+    Route::get('users/user', [AuthController::class, 'currentUser']);
 });
 
 Route::resource('students', StudentsController::class);

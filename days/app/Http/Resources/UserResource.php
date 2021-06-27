@@ -18,7 +18,6 @@ class UserResource extends JsonResource
             'internal_number' => $this->internal_number,
             'name' => $this->name,
             'email' => $this->email,
-            'password' => $this->password,
             'profile_picture' => $this->profile_picture,
             'role_id' => $this->role_id,
             'cc' => $this->cc,
@@ -28,8 +27,6 @@ class UserResource extends JsonResource
             'remember_token' => $this->remember_token,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'notifications' => $this->notifications,
-            'notifications_count' => $this->notifications_count,
         ];
     }
 }
