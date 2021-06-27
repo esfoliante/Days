@@ -29,7 +29,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     var weekDay = DateFormat('EEEE').format(date);
 
     for (var schedule in schedules) {
-      if (schedule.dayWeek == "Monday") {
+      if (schedule.dayWeek == weekDay) {
         today.add(schedule);
       }
     }
@@ -50,21 +50,21 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
 
     String parseMinutes(String time) {
       int tIndex = time.lastIndexOf(':');
-      String minutes = time.substring(tIndex, tIndex + 2);
+      String minutes = time.substring(tIndex + 1, tIndex + 2);
 
       return minutes;
     }
 
     bool _checkSpecial(String startsAt, String endsAt) {
-
       var date = DateTime.now();
 
-      if(date.hour == int.parse(parseHour(startsAt)) && date.minute > int.parse(parseMinutes(startsAt)) || date.hour == int.parse(parseHour(endsAt)) && date.minute == 00) {
+      if (date.hour == double.parse(parseHour(startsAt)) &&
+              date.minute > double.parse(parseMinutes(startsAt)) ||
+          date.hour == double.parse(parseHour(endsAt)) && date.minute == 00) {
         return true;
       }
 
       return false;
-
     }
 
     return Scaffold(
@@ -84,8 +84,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               for (var todaySchedule in today) ...[
                 TimeLineChunk(
                   title: todaySchedule.subject,
-                  date: "${parseTime(todaySchedule.startsAt)} - ${parseTime(todaySchedule.endsAt)}",
-                  isSpecial: _checkSpecial(parseTime(todaySchedule.startsAt), parseTime(todaySchedule.endsAt)),
+                  date:
+                      "${parseTime(todaySchedule.startsAt)} - ${parseTime(todaySchedule.endsAt)}",
+                  isSpecial: _checkSpecial(parseTime(todaySchedule.startsAt),
+                      parseTime(todaySchedule.endsAt)),
+                  // isSpecial: false,
                   isFirst: today.indexOf(todaySchedule) == 0,
                   isLast: today.indexOf(todaySchedule) == today.length - 1,
                 ),

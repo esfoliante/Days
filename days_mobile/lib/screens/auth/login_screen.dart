@@ -229,7 +229,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             _studentMob.setStudent(student);
 
-                            Navigator.popAndPushNamed(context, 'home');
+                            if(_studentMob.student.firstLogin == 0) {
+                              Navigator.popAndPushNamed(context, 'chooseTheme');
+                            } else {
+                              Navigator.popAndPushNamed(context, 'home');
+                            }
                           } catch (e) {
                             print(e.toString());
                             ScaffoldMessenger.of(context).showSnackBar(

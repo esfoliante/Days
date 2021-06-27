@@ -10,7 +10,6 @@ import 'package:days_mobile/screens/auth/login_screen.dart';
 import 'package:days_mobile/screens/communitcations/communication_screen.dart';
 import 'package:days_mobile/screens/communitcations/communications_screen.dart';
 import 'package:days_mobile/screens/home/home_screen.dart';
-import 'package:days_mobile/screens/initialization/change_password_screen.dart';
 import 'package:days_mobile/screens/initialization/choosetheme_screen.dart';
 import 'package:days_mobile/screens/initialization/tour_screen.dart';
 import 'package:days_mobile/screens/profile_screen.dart';
@@ -90,10 +89,6 @@ class RouterHandler {
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           LoadingScreen());
 
-  static final Handler _changePasswordScreen = Handler(
-      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
-          ChangePasswordScreen());
-
   static void setupRouter() {
     router.define(
       'login',
@@ -162,10 +157,6 @@ class RouterHandler {
     router.define(
       'load',
       handler: _loadindScreen,
-    );
-    router.define(
-      'changePassword',
-      handler: _changePasswordScreen,
     );
   }
 }

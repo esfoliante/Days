@@ -22,7 +22,7 @@ class CardWidget extends StatelessWidget {
         minWidth: 200,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.circular(
           10.0,
         ),
@@ -101,6 +101,7 @@ class CardWidget extends StatelessWidget {
                     version: QrVersions.auto,
                     size: width * 0.9,
                     gapless: false,
+                    foregroundColor: Theme.of(context).highlightColor,
                   ),
                 ),
               ),
