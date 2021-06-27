@@ -6,8 +6,9 @@ import 'package:qr_flutter/qr_flutter.dart';
 class CardWidget extends StatelessWidget {
   final String name;
   final int processNumber;
+  final int id;
 
-  const CardWidget({Key key, this.name, this.processNumber}) : super(key: key);
+  const CardWidget({Key key, this.name, this.processNumber, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +82,7 @@ class CardWidget extends StatelessWidget {
               ),
             ),
             FlatButton(
-              onPressed: () => _showQR(context, processNumber.toString()),
+              onPressed: () => _showQR(context, processNumber.toString(), id),
               child: Padding(
                 padding: const EdgeInsets.only(top: 15.0),
                 child: Container(
@@ -113,7 +114,7 @@ class CardWidget extends StatelessWidget {
   }
 }
 
-_showQR(BuildContext context, String processNumber) async {
+_showQR(BuildContext context, String processNumber, int id) async {
   double height = MediaQuery.of(context).size.height;
   double width = MediaQuery.of(context).size.width;
 
@@ -156,7 +157,7 @@ _showQR(BuildContext context, String processNumber) async {
                   height: height * 0.18,
                 ),
                 QrImage(
-                  data: processNumber.toString(),
+                  data: "days.test/students/${id.toString()}",
                   version: QrVersions.auto,
                   size: width * 0.5,
                   backgroundColor: Colors.white,
