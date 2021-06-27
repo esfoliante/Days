@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       processNumber: studentMob.student.internalNumber == null
                           ? studentMob.student.id
                           : studentMob.student.internalNumber,
+                      id: studentMob.student.id,
                     ),
                     SizedBox(
                       height: height * 0.04,
