@@ -21,7 +21,7 @@ class InformationCard extends StatelessWidget {
       child: Container(
         width: width,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).backgroundColor,
           borderRadius: BorderRadius.circular(
             10.0,
           ),
@@ -52,7 +52,7 @@ class InformationCard extends StatelessWidget {
                     ),
                     child: Container(
                       constraints: BoxConstraints(
-                        maxWidth: width * 0.53,
+                        maxWidth: width * 0.51,
                       ),
                       child: Text(
                         title,

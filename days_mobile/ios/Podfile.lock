@@ -1,33 +1,46 @@
 PODS:
   - Flutter (1.0.0)
-  - integration_test (0.0.1):
+  - flutter_nfc_reader (0.0.1):
     - Flutter
-  - nfc_manager (0.0.1):
+    - VYNFCKit
+  - integration_test (0.0.1):
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
+  - vibration (1.7.3):
+    - Flutter
+  - VYNFCKit (0.3.2)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_nfc_reader (from `.symlinks/plugins/flutter_nfc_reader/ios`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
-  - nfc_manager (from `.symlinks/plugins/nfc_manager/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+  - vibration (from `.symlinks/plugins/vibration/ios`)
+
+SPEC REPOS:
+  trunk:
+    - VYNFCKit
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_nfc_reader:
+    :path: ".symlinks/plugins/flutter_nfc_reader/ios"
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
-  nfc_manager:
-    :path: ".symlinks/plugins/nfc_manager/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
+  vibration:
+    :path: ".symlinks/plugins/vibration/ios"
 
 SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_nfc_reader: 67d71071d779d28b827ea50dcbe00d09286f253d
   integration_test: 6eb66a19f7104200dcfdd62bc0077e1b09686e4f
-  nfc_manager: 69e4cd9c15112206ab30246b1ce8d81a75729fdf
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+  vibration: b5a33e764c3f609a975b9dca73dce20fdde627dc
+  VYNFCKit: 86a9b711fd1f34f6f7128a2a883cd58dbd781b9d
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 

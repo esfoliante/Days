@@ -1,5 +1,14 @@
+import 'dart:convert';
+
+import 'package:days_mobile/domain/resources/StudentResource.dart';
+import 'package:days_mobile/models/Student.dart';
+import 'package:days_mobile/stores/student.store.dart';
+import 'package:days_mobile/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class TourScreen extends StatefulWidget {
   TourScreen({Key key}) : super(key: key);
@@ -20,6 +29,38 @@ class _TourScreenState extends State<TourScreen> {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    Future<void> _updateFirstLogin() async {
+      final StudentMob _studentMob =
+          Provider.of<StudentMob>(context, listen: false);
+
+      Student student = await StudentResource().getCurrentStudent();
+      _studentMob.setStudent(student);
+
+      final SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      String token = sharedPreferences.getString('token');
+
+      final response = await http.put(
+        Uri.parse('http://$base_url/students/${_studentMob.student.id}'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: jsonEncode(<String, dynamic>{
+          'first_login': 1,
+        }),
+      );
+
+      print(response.statusCode);
+
+      if (response.statusCode != 200) {
+        throw "Couldn't update student";
+      } else {
+        Navigator.pushNamed(context, 'home');
+      }
+    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -129,7 +170,7 @@ class _TourScreenState extends State<TourScreen> {
                           fontSize: width * 0.05,
                         ),
                       ),
-                      onPressed: () => Navigator.pushNamed(context, 'home'),
+                      onPressed: () => _updateFirstLogin(),
                     ),
                   ),
                 ),

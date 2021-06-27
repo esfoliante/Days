@@ -23,7 +23,7 @@ class CommunicationCard extends StatelessWidget {
       child: Container(
         width: width,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).backgroundColor,
           borderRadius: BorderRadius.circular(
             10.0,
           ),
@@ -56,7 +56,7 @@ class CommunicationCard extends StatelessWidget {
                       ),
                       child: Container(
                         constraints: BoxConstraints(
-                          maxWidth: width * 0.43,
+                          maxWidth: width * 0.42,
                         ),
                         child: Text(
                           title,

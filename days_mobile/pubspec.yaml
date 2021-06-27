@@ -46,6 +46,7 @@ dependencies:
   flutter_nfc_reader: ^0.1.0
   animated_check: ^1.0.0
   vibration: ^1.7.3
+  toggle_switch: ^1.2.0
 
 dev_dependencies:
   flutter_test:
