@@ -4,7 +4,7 @@
 >
    <uses-permission android:name="android.permission.CAMERA" />
    <uses-feature android:name="android.hardware.camera" />
-   <application android:label="days_workers" android:icon="@mipmap/ic_launcher">
+   <application android:label="Days Workers" android:icon="@mipmap/launcher_icon">
         <activity
       android:name=".MainActivity"
       android:launchMode="singleTop"
