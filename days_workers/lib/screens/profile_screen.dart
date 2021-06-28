@@ -4,6 +4,7 @@ import 'package:days_workers/models/Student.dart';
 import 'package:days_workers/utils/config.dart';
 import 'package:days_workers/widgets/profile_custom_appbar.dart';
 import 'package:days_workers/widgets/profile_item_widget.dart';
+import 'package:days_workers/widgets/timeline_chunck_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,22 +48,89 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Student.fromJson(json.decode(response.body)['data']);
   }
 
+   String parseDate(String createdAt) {
+      int tIndex = createdAt.indexOf('T');
+      String date = createdAt.substring(0, tIndex);
+      String time =
+          createdAt.substring(tIndex + 1, createdAt.lastIndexOf(':'));
+
+      return "$date , $time";
+    }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     String parseDate(String createdAt) {
-      int tIndex = createdAt.indexOf(' ');
+      int tIndex = createdAt.indexOf('T');
+      String date = createdAt.substring(0, tIndex);
+      String time =
+          createdAt.substring(tIndex + 1, createdAt.lastIndexOf(':'));
 
-      return createdAt.substring(0, tIndex - 1);
+      return "$date , $time";
     }
+
 
     Widget _buildLoadingBar() {
       return const Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
         ),
+      );
+    }
+
+    Widget _checkLimitation(limitation) {
+      if (limitation == null)
+        return Column(
+          children: [
+            SizedBox(
+              height: height * 0.04,
+            ),
+            ProfileItem(
+              title: 'Limitações',
+              content: 'Sem limitações registadas',
+            ),
+          ],
+        );
+
+      return Column(
+        children: [
+          SizedBox(
+            height: height * 0.04,
+          ),
+          ProfileItem(
+            title: 'Limitações',
+            content: '$limitation',
+          ),
+        ],
+      );
+    }
+
+    Widget _checkAllergies(allergies) {
+      if (allergies == null) 
+        return Column(
+          children: [
+            SizedBox(
+              height: height * 0.04,
+            ),
+            ProfileItem(
+              title: 'Alergias',
+              content: 'Sem alergias registadas',
+            ),
+          ],
+        );
+
+      return Column(
+        children: [
+          SizedBox(
+            height: height * 0.04,
+          ),
+          ProfileItem(
+            title: 'Alergias',
+            content: '$allergies',
+          ),
+        ],
       );
     }
 
@@ -121,8 +189,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: height * 0.04,
                                 ),
                                 ProfileItem(
-                                    title: 'Curso',
-                                    content: snapshot.data.course.name),
+                                  title: 'Curso',
+                                  content: snapshot.data.course.name,
+                                ),
                                 SizedBox(
                                   height: height * 0.04,
                                 ),
@@ -134,8 +203,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: height * 0.04,
                                 ),
                                 ProfileItem(
-                                    title: 'Enc. de educação',
-                                    content: snapshot.data.tutor.name),
+                                  title: 'Enc. de educação',
+                                  content: snapshot.data.tutor.name,
+                                ),
+                                _checkLimitation(snapshot.data.limitation),
+                                _checkAllergies(snapshot.data.allergies)
                               ],
                             ),
                           ),
@@ -169,10 +241,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             child: Column(
                               children: [
-                                ProfileItem(
-                                  title: 'Cenas',
-                                  content: 'yah',
-                                ),
+                                for (var entrance in snapshot.data.entrances)
+                                  TimeLineChunk(
+                                    title: entrance.actionType == "Entrada" ? 'Entrada' : "Saída",
+                                    date: parseDate(entrance.createdAt),
+                                    isSpecial: entrance.actionType == "Saída",
+                                    isFirst: snapshot.data.entrances.indexOf(entrance) == 0,
+                                    isLast: snapshot.data.entrances.indexOf(entrance) == snapshot.data.entrances.length - 1,
+                                  ),
                               ],
                             ),
                           ),

@@ -40,7 +40,7 @@ class ProfileCustomAppbar extends StatelessWidget {
               bottom: 10.0,
             ),
             child: Text(
-              'Adicionais',
+              'Entradas e Saídas',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,

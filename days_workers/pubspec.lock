@@ -28,7 +28,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.0.0"
   async:
     dependency: transitive
     description:
@@ -221,6 +221,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_launcher_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_launcher_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.0"
   flutter_mobx:
     dependency: "direct main"
     description:
@@ -234,7 +241,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.1.8+4"
   flutter_qr_bar_scanner:
     dependency: "direct main"
     description:

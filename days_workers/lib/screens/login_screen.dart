@@ -43,18 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
       super.dispose();
     }
 
-    Future<void> loginStudent(String email, String password, UserMob usermob, context) async {
-      _showDialog(context);
-
-      final user = await UserResource.login(email.trim(), password.trim());
-
-      if (user == null) return 0;
-
-      userMob.setUser(user);
-
-      Navigator.popAndPushNamed(context, 'qrcodeScan');
-    }
-
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
