@@ -25,7 +25,7 @@ class CustomAppBar extends StatelessWidget {
           icon: Icon(Icons.settings_outlined, size: 30.0, color: Colors.white),
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
-          onPressed: () => debugPrint("Settings"),
+          onPressed: () => Navigator.pushNamed(context, 'settings'),
         )
       ],
       leading: IconButton(

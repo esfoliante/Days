@@ -13,6 +13,7 @@ import 'package:days_mobile/screens/home/home_screen.dart';
 import 'package:days_mobile/screens/initialization/choosetheme_screen.dart';
 import 'package:days_mobile/screens/initialization/tour_screen.dart';
 import 'package:days_mobile/screens/profile_screen.dart';
+import 'package:days_mobile/screens/settings_screen.dart';
 import 'package:days_mobile/screens/timeline_screens/card_moviments_screen.dart';
 import 'package:days_mobile/screens/timeline_screens/schedule_screen.dart';
 import 'package:fluro/fluro.dart';
@@ -89,6 +90,10 @@ class RouterHandler {
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           LoadingScreen());
 
+  static final Handler _settingsScreen = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          SettingsScreen());
+
   static void setupRouter() {
     router.define(
       'login',
@@ -157,6 +162,10 @@ class RouterHandler {
     router.define(
       'load',
       handler: _loadindScreen,
+    );
+    router.define(
+      'settings',
+      handler: _settingsScreen,
     );
   }
 }

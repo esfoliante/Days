@@ -72,10 +72,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         onPressed: () => _scaffoldKey.currentState.openDrawer(),
                       ),
-                      Icon(
-                        Icons.settings_outlined,
-                        color: Colors.white,
-                        size: height * 0.04,
+                      IconButton(
+                        icon: Icon(
+                          Icons.settings_outlined,
+                          color: Colors.white,
+                          size: height * 0.04,
+                        ),
+                        onPressed: () => Navigator.pushNamed(context, 'settings'),
                       ),
                     ],
                   ),
