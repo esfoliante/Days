@@ -30,7 +30,7 @@ class ProfileCustomAppbar extends StatelessWidget {
           ),
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
-          onPressed: () => debugPrint("Settings"),
+          onPressed: () => Navigator.pushNamed(context, 'settings'),
         )
       ],
       leading: IconButton(
