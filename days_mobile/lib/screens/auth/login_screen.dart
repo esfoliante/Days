@@ -16,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  GlobalKey _scaffold = GlobalKey();
 
   @override
   void dispose() {
@@ -56,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final StudentMob _studentMob = Provider.of<StudentMob>(context);
 
     return Scaffold(
+      key: _scaffold,
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -116,6 +118,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Icons.email_outlined,
                           color: Theme.of(context).primaryColor,
                         ),
+                        hintStyle: TextStyle(
+                          color: Theme.of(context).highlightColor,
+                        ),
                       ),
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
@@ -167,30 +172,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           Icons.lock_outline,
                           color: Theme.of(context).primaryColor,
                         ),
+                        hintStyle: TextStyle(
+                          color: Theme.of(context).highlightColor,
+                        ),
                       ),
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20.0,
-                      top: 10.0,
-                    ),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Esqueci-me da password",
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ),
                   SizedBox(
-                    height: height * 0.08,
+                    height: height * 0.1,
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -224,23 +216,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             print(emailController.text.trim());
                             print(passwordController.text.trim());
 
-                            final student = await StudentResource.login(emailController.text.trim(), passwordController.text.trim());
-                            _showDialog(context);
+                            final student = await StudentResource.login(
+                                emailController.text.trim(),
+                                passwordController.text.trim());
 
                             _studentMob.setStudent(student);
 
-                            if(_studentMob.student.firstLogin == 0) {
+                            if (_studentMob.student.firstLogin == 0) {
                               Navigator.popAndPushNamed(context, 'chooseTheme');
                             } else {
                               Navigator.popAndPushNamed(context, 'home');
                             }
                           } catch (e) {
                             print(e.toString());
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text("Email ou password inválidas")
-                              )
-                            );
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text("Email ou password inválidas")));
                           }
                         }
                       },

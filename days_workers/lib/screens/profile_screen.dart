@@ -160,15 +160,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           SizedBox(
                             height: height * 0.05,
                           ),
-                          Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                200.0,
-                              ),
-                              child: Image.asset(
-                                'assets/images/profile.jpg',
-                                width: width * 0.45,
-                              ),
+                           Center(
+                            child: Image.network(
+                              'https://eu.ui-avatars.com/api/?background=508D8F&color=fff&name=${snapshot.data.name}&bold=True&rounded=True&size=190',
                             ),
                           ),
                           SizedBox(
@@ -220,15 +214,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           SizedBox(
                             height: height * 0.05,
                           ),
-                          Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                200.0,
-                              ),
-                              child: Image.asset(
-                                'assets/images/profile.jpg',
-                                width: width * 0.45,
-                              ),
+                           Center(
+                            child: Image.network(
+                              'https://eu.ui-avatars.com/api/?background=508D8F&color=fff&name=${snapshot.data.name}&bold=True&rounded=True&size=190',
                             ),
                           ),
                           SizedBox(

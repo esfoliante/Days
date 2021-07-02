@@ -15,7 +15,7 @@
     <div class="card card-accent-primary">
         <div class="card-header d-flex align-items-center justify-content-between">
             {{ __('Dashboard') }}
-            <button type="button" class="btn btn-primary" wire:click="create">Nova(o) Student</button>
+            <button type="button" class="btn btn-primary" wire:click="create">Novo Estudante</button>
 
         </div>
 
@@ -35,7 +35,7 @@
 					<th>Data de nascimento</th>
 					<th>Course</th>
 					<th>Tutor</th>
-					
+
                     <th scope="col">Criado a</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -56,7 +56,7 @@
 						<td>{{ $studentItem->birthday ?? '' }}</td>
 						<td>{{ $studentItem->course->name ?? '' }}</td>
 						<td>{{ $studentItem->tutors->name ?? '' }}</td>
-						
+
 
                         <td>{{ $studentItem->created_at->diffForHumans()  }}</td>
 
@@ -98,7 +98,7 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="store">
 
-                        
+
 
 
             <label for="basiurl">Nome</label>
@@ -208,7 +208,7 @@
                         </div>
                     @enderror
                 </div>
-            
+
 
 
                   <div class="form-group" wire:ignore>
@@ -292,7 +292,7 @@
         });
 
 
-        
+
 
 
 

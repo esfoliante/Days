@@ -15,7 +15,7 @@
     <div class="card card-accent-primary">
         <div class="card-header d-flex align-items-center justify-content-between">
             {{ __('Dashboard') }}
-            <button type="button" class="btn btn-primary" wire:click="create">Nova(o) Tutor</button>
+            <button type="button" class="btn btn-primary" wire:click="create">Novo Encarregado de Educação</button>
 
         </div>
 
@@ -26,14 +26,13 @@
                     <th scope="col">#</th>
                     <th>Nome</th>
 					<th>Email</th>
-					<th>Password</th>
 					<th>Contacto</th>
 					<th>Profissão</th>
 					<th>Cartão de Cidadão</th>
 					<th>NIF</th>
 					<th>Morada</th>
 					<th>Data de nascimento</th>
-					
+
                     <th scope="col">Criado a</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -44,15 +43,14 @@
                     <tr>
                         <th scope="row">{{ $tutorItem->id }}</th>
                         <td>{{ $tutorItem->name ?? '' }}</td>
-						<td>{{ $tutorItem->email ?? '' }}</td>
-						<td>Escondido</td>
+						<td>{{ \Illuminate\Support\Str::limit($tutorItem->email, 20, '...') }}</td>
 						<td>{{ $tutorItem->contact ?? '' }}</td>
 						<td>{{ $tutorItem->profession ?? '' }}</td>
 						<td>{{ $tutorItem->cc ?? '' }}</td>
 						<td>{{ $tutorItem->nif ?? '' }}</td>
-						<td>{{ $tutorItem->residence ?? '' }}</td>
+						<td>{{ \Illuminate\Support\Str::limit($tutorItem->residence, 10, '...') }}</td>
 						<td>{{ $tutorItem->birthday ?? '' }}</td>
-						
+
 
                         <td>{{ $tutorItem->created_at->diffForHumans()  }}</td>
 
@@ -94,7 +92,7 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="store">
 
-                        
+
 
 
             <label for="basiurl">Nome</label>
@@ -114,18 +112,6 @@
                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                                    wire:model="email" name="Email">
                      @error('email')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-            </div>
-
-
-            <label for="basiurl">Password</label>
-            <div class="input-group mb-3">
-                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                   wire:model="password" name="Password">
-                     @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -204,7 +190,7 @@
                         </div>
                     @enderror
                 </div>
-            
+
 
                 </div>
                 <div class="modal-footer">
@@ -258,7 +244,7 @@
         });
 
 
-        
+
 
 
 

@@ -69,7 +69,7 @@ class Index extends Component
     public function destroy()
     {
         $this->classroom->delete();
-        $this->emit('toast-success', 'Classroom removida(o) com sucesso');
+        $this->emit('toast-success', 'Sala removida com sucesso');
         $this->emit('closeDestroyModal');
     }
 
@@ -88,8 +88,8 @@ class Index extends Component
 
         $this->closeModal();
         $this->emit('toast-success', isset($this->classroom)
-            ? 'Classroom atualizada(o)'
-            : 'Classroom criada(o)');
+            ? 'Sala atualizada'
+            : 'Sala criada');
     }
 
     private function resetInputs(Classroom $classroom = null)

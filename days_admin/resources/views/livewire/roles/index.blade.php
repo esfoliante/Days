@@ -15,7 +15,7 @@
     <div class="card card-accent-primary">
         <div class="card-header d-flex align-items-center justify-content-between">
             {{ __('Dashboard') }}
-            <button type="button" class="btn btn-primary" wire:click="create">Novo Curso</button>
+            <button type="button" class="btn btn-primary" wire:click="create">Novo Cargo</button>
 
         </div>
 
@@ -25,8 +25,6 @@
                 <tr>
                     <th scope="col">#</th>
                     <th>Nome</th>
-					<th>Abreviatura</th>
-                    <th>Diretor de curso</th>
 
                     <th scope="col">Criado a</th>
                     <th scope="col">Ações</th>
@@ -34,23 +32,21 @@
                 </thead>
                 <tbody>
 
-                @forelse($courses as $courseItem)
+                @forelse($roles as $role)
                     <tr>
-                        <th scope="row">{{ $courseItem->id }}</th>
-                        <td>{{ $courseItem->name ?? '' }}</td>
-						<td>{{ $courseItem->slug ?? '' }}</td>
-						<td>{{ $courseItem->user->name ?? '' }}</td>
+                        <th scope="row">{{ $role->id }}</th>
+                        <td>{{ $role->name ?? '' }}</td>
 
 
-                        <td>{{ $courseItem->created_at->diffForHumans()  }}</td>
+                        <td>{{ $role->created_at->diffForHumans()  }}</td>
 
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" wire:click="$emit('update', {{ $courseItem }})" class="btn btn-warning">
+                                <button type="button" wire:click="$emit('update', {{ $role }})" class="btn btn-warning">
                                     Editar
                                 </button>
                                 <button type="button" class="btn btn-danger"
-                                        wire:click="$emit('openDestroy', {{ $courseItem }})">Remover
+                                        wire:click="$emit('openDestroy', {{ $role }})">Remover
                                 </button>
                             </div>
                         </td>
@@ -64,7 +60,7 @@
                 </tbody>
             </table>
 
-            {{ $courses->links() }}
+            {{ $roles->links() }}
         </div>
     </div>
 
@@ -74,7 +70,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"
-                        id="exampleModalLabel">{{ isset($course) ? __('Editar Course') : __('Novo Course') }}</h5>
+                        id="exampleModalLabel">{{ isset($role) ? __('Editar Cargo') : __('Novo Cargo') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -82,50 +78,24 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="store">
 
-            <label for="basiurl">Nome</label>
-            <div class="input-group mb-3">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                   wire:model="name" name="Nome">
-                     @error('name')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+                        <label for="basiurl">Nome</label>
+                        <div class="input-group mb-3">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                               wire:model="name" name="Nome">
+                                 @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                         </div>
-                    @enderror
-            </div>
 
-
-            <label for="basiurl">Abreviatura</label>
-            <div class="input-group mb-3">
-                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
-                                   wire:model="slug" name="Slug">
-                     @error('slug')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-            </div>
-
-            <div class="form-group" wire:ignore>
-                <label for="user_id">Diretor de curso</label>
-                <select
-                    class="form-control"
-                    id="user_id"
-                >
-                <option selected>Selecione uma opção</option>
-                @foreach(DB::table('users')->where('role_id', '3')->get() as $child)
-                    <option value="{{ $child->id }}">{{ $child->name }}</option>
-                @endforeach
-
-                </select>
-            </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit"
-                            class="btn btn-primary">{{ isset($course) ? __('Atualizar') : __('Criar') }}</button>
-                </div>
-                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="submit"
+                                        class="btn btn-primary">{{ isset($parentmodel) ? __('Atualizar') : __('Criar') }}</button>
+                            </div>
+                    </form>
 
             </div>
         </div>
@@ -136,7 +106,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Remover Course') }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Remover Cargo') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -169,12 +139,6 @@
         window.livewire.on('closeDestroyModal', () => {
             $('#destroyModal').modal('hide');
         });
-
-
-
-
-
-
 
     </script>
 @endpush

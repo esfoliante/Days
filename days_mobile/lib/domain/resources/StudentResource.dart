@@ -43,6 +43,8 @@ class StudentResource {
       },
     );
 
+    print('Response ${response.statusCode}');
+
     Map<String, dynamic> data = json.decode(response.body);
 
     if (response.statusCode != 200) {
@@ -56,6 +58,8 @@ class StudentResource {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
     final String token = sharedPreferences.getString('token');
+
+    print(token);
 
     Student student;
 

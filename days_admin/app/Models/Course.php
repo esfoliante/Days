@@ -11,7 +11,7 @@ class Course extends Model
 
     protected $table = 'courses';
 
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name', 'slug', 'role_id'];
 
     protected $dates = ['created_at'];
 

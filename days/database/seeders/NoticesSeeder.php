@@ -16,8 +16,8 @@ class NoticesSeeder extends Seeder
     public function run()
     {
         DB::table('notices')->insert([
-            'reason' => Str::random(10),
-            'description' => Str::random(30),
+            'reason' => 'Luta na aula',
+            'description' => 'O aluno teve um comfronto físico com um colega',
             'user_id' => 1,
             'student_id' => 1,
             'occurrence_date' => date('Y-m-d H:i:s'),

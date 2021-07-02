@@ -15,7 +15,7 @@
     <div class="card card-accent-primary">
         <div class="card-header d-flex align-items-center justify-content-between">
             {{ __('Dashboard') }}
-            <button type="button" class="btn btn-primary" wire:click="create">Nova(o) School Class</button>
+            <button type="button" class="btn btn-primary" wire:click="create">Nova Turma</button>
 
         </div>
 
@@ -27,7 +27,7 @@
                     <th>Nome</th>
 					<th>Ano</th>
 					<th>Course</th>
-					
+
                     <th scope="col">Criado a</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -40,7 +40,7 @@
                         <td>{{ $schoolclassItem->name ?? '' }}</td>
 						<td>{{ $schoolclassItem->year ?? 'Sem dados' }}</td>
 						<td>{{ $schoolclassItem->course->name ?? '' }}</td>
-						
+
 
                         <td>{{ $schoolclassItem->created_at->diffForHumans()  }}</td>
 
@@ -82,7 +82,7 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="store">
 
-                        
+
 
 
             <label for="basiurl">Nome</label>
@@ -110,7 +110,7 @@
 
 
                   <div class="form-group" wire:ignore>
-                            <label for="course_id">Course</label>
+                            <label for="course_id">Curso</label>
                             <select
                                 class=""
                                 id="course_id"
@@ -140,7 +140,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Remover School Class') }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Remover Turma') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -175,7 +175,7 @@
         });
 
 
-        
+
 
 
 
