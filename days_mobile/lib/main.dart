@@ -56,26 +56,29 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MultiProvider(
-      providers: [
-        Provider<StudentMob>(
-          create: (_) => studentMob,
-        ),
-      ],
-      child: FutureBuilder(
-          future: _chooseTheme(),
-          builder: (context, AsyncSnapshot<ThemeData> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return _buildLoadingBar();
-            }
-
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: snapshot.data,
-              initialRoute: 'load',
-              onGenerateRoute: RouterHandler.router.generator,
-            );
-          }),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MultiProvider(
+        providers: [
+          Provider<StudentMob>(
+            create: (_) => studentMob,
+          ),
+        ],
+        child: FutureBuilder(
+            future: _chooseTheme(),
+            builder: (context, AsyncSnapshot<ThemeData> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return _buildLoadingBar();
+              }
+    
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: snapshot.data,
+                initialRoute: 'load',
+                onGenerateRoute: RouterHandler.router.generator,
+              );
+            }),
+      ),
     );
   }
 }

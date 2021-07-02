@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Course;
+namespace App\Http\Livewire\Role;
 
 use App\Http\Traits\WithModal;
-use App\Models\Course;
+use App\Models\Role;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,65 +11,64 @@ class Index extends Component
 {
     use WithPagination, WithModal;
 
-    public $course;
+    public $role;
     public $searchTerm = '';
 
     protected $paginationTheme = 'bootstrap';
 
-    protected $searchColumns = ['id','name','slug','role_id'];
+    protected $searchColumns = ['id', 'name'];
 
     protected $listeners = ['update', 'openDestroy', 'destroy'];
 
-
-	 public $name;
-	 public $slug;
-	 public $role_id;
+    public $name;
 
     public function render()
     {
         $searchTerm = "%$this->searchTerm%";
 
-        $courses = Course::query();
+        $roles = Role::query();
 
         if (strlen($this->searchTerm) > 0) {
-            $courses = $courses->where(function ($query) use ($searchTerm) {
+            $roles = $roles->where(function ($query) use ($searchTerm) {
                 foreach ($this->searchColumns as $column) {
                     $query->orwhere($column, 'like', $searchTerm);
                 }
             });
         }
 
-        $courses = $courses->latest()->paginate(8);
+        $roles = $roles->latest()->paginate(8);
 
-        return view('livewire.courses.index', ['courses' => $courses]);
+        return view('livewire.roles.index', [
+            'roles' => $roles,
+        ]);
     }
 
     public function create()
     {
-        $this->course = null;
+        $this->role = null;
         $this->resetErrorBag();
         $this->emit('openModal');
         $this->resetInputs();
     }
 
-    public function update(Course $course)
+    public function update(Role $role)
     {
-        $this->course = $course;
+        $this->role = $role;
         $this->resetErrorBag();
         $this->emit('openModal');
-        $this->resetInputs($course);
+        $this->resetInputs($role);
     }
 
-    public function openDestroy(Course $course)
+    public function openDestroy(Role $role)
     {
-        $this->course = $course;
+        $this->role = $role;
         $this->emit('openDestroyModal');
     }
 
     public function destroy()
     {
-        $this->course->delete();
-        $this->emit('toast-success', 'Curso removido com sucesso');
+        $this->role->delete();
+        $this->emit('toast-success', 'Cargo removido com sucesso');
         $this->emit('closeDestroyModal');
     }
 
@@ -82,22 +81,18 @@ class Index extends Component
     {
         $data = $this->validate($this->rules());
 
-        isset($this->course)
-            ? $this->course->update($data)
-            : Course::create($data);
+        isset($this->role) ? $this->role->update($data) : Role::create($data);
 
         $this->closeModal();
-        $this->emit('toast-success', isset($this->course)
-            ? 'Curso atualizado'
-            : 'Curso criado');
+        $this->emit(
+            'toast-success',
+            isset($this->role) ? 'Cargo atualizado' : 'Cargo criado'
+        );
     }
 
-    private function resetInputs(Course $course = null)
+    private function resetInputs(Role $role = null)
     {
-
-        $this->name = $course->name ??'';
-        $this->slug = $course->slug ??'';
-        $this->role_id = $course->role_id ??'';
+        $this->name = $role->name ?? '';
 
         $this->emit('clear-input');
     }
@@ -106,9 +101,6 @@ class Index extends Component
     {
         return [
             'name' => 'string|required',
-			'slug' => 'string|required',
-            'role_id' => 'required|integer'
         ];
     }
-
 }

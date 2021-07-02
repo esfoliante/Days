@@ -15,7 +15,7 @@
     <div class="card card-accent-primary">
         <div class="card-header d-flex align-items-center justify-content-between">
             {{ __('Dashboard') }}
-            <button type="button" class="btn btn-primary" wire:click="create">Nova(o) Classroom</button>
+            <button type="button" class="btn btn-primary" wire:click="create">Nova Sala</button>
 
         </div>
 
@@ -24,10 +24,10 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Department</th>
+                    <th>Bloco</th>
 					<th>Piso</th>
 					<th>Número</th>
-					
+
                     <th scope="col">Criado a</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -40,7 +40,7 @@
                         <td>{{ $classroomItem->department ?? '' }}</td>
 						<td>{{ $classroomItem->floor ?? 'Sem dados' }}</td>
 						<td>{{ $classroomItem->number ?? 'Sem dados' }}</td>
-						
+
 
                         <td>{{ $classroomItem->created_at->diffForHumans()  }}</td>
 
@@ -74,7 +74,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"
-                        id="exampleModalLabel">{{ isset($classroom) ? __('Editar Classrooms') : __('Novo Classrooms') }}</h5>
+                        id="exampleModalLabel">{{ isset($classroom) ? __('Editar Sala') : __('Nova Sala') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -82,10 +82,10 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="store">
 
-                        
 
 
-            <label for="basiurl">Department</label>
+
+            <label for="basiurl">Bloco</label>
             <div class="input-group mb-3">
                     <input type="text" class="form-control @error('department') is-invalid @enderror"
                                    wire:model="department" name="Department">
@@ -137,7 +137,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Remover Classrooms') }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Remover Sala') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -172,7 +172,7 @@
         });
 
 
-        
+
 
 
 

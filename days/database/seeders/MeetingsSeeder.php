@@ -17,8 +17,8 @@ class MeetingsSeeder extends Seeder
     {
         DB::table('meetings')->insert([
             'user_id' => 1,
-            'title' => Str::random(10),
-            'content' => Str::random(40),
+            'title' => 'Entrega das notas',
+            'content' => 'Vão ser entregues as notas',
             'meeting_date' => date('Y-m-d H:i:s'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

@@ -16,8 +16,8 @@ class CourseSeeder extends Seeder
     public function run()
     {
         DB::table('courses')->insert([
-            'name' => Str::random(10),
-            'slug' => Str::random(3),
+            'name' => 'Não Administração e Marketing',
+            'slug' => 'NAM',
             'user_id' => 1,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

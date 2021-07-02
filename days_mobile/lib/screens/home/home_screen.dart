@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ActionCard(
                       title: "Próxima aula",
-                      subtitle: "Português",
+                      subtitle: "",
                       isImportant: false,
                       route: "schedule",
                     ),
@@ -212,7 +212,7 @@ _enterSchool(BuildContext context) async {
         Provider.of<StudentMob>(context, listen: false);
     final List<Entrance> entrances = _studentMob.student.entrances;
 
-    if (entrances.last.actionType == "Saída") return 'Entrada';
+    if (entrances.length == 0 || entrances.last.actionType == "Saída") return 'Entrada';
 
     return 'Saída';
   }

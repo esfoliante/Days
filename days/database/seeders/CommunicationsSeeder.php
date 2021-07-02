@@ -17,7 +17,7 @@ class CommunicationsSeeder extends Seeder
     {
         DB::table('communications')->insert([
             'user_id' => 1,
-            'title' => Str::random(40),
+            'title' => 'Comunicado aos Pais',
             'content' => Str::random(200),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

@@ -16,7 +16,7 @@ class SubjectsSeeder extends Seeder
     public function run()
     {
         DB::table('subjects')->insert([
-            'name' => Str::random(15),
+            'name' => 'Português',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

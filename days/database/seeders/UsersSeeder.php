@@ -18,12 +18,13 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             'internal_number' => 1,
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
+            'name' => 'Administrador',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('abc12345'),
             'profile_picture' => '',
             'role_id' => 1,
-            'cc' => Str::random(8),
-            'contact' => Str::random(9),
+            'cc' => '12345678',
+            'contact' => '912345678',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             'birthday' => '2003-03-02',

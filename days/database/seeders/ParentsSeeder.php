@@ -16,14 +16,14 @@ class ParentsSeeder extends Seeder
     public function run()
     {
         DB::table('parents')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'contact' => Str::random(9),
-            'student_relationship' => 'Pai',
-            'profession' => Str::random(10),
-            'cc' => Str::random(8),
-            'NIF' => Str::random(9),
-            'residence' => Str::random(20),
+            'name' => 'Mamã Aguiar',
+            'email' => 'mae@gmail.com',
+            'contact' => '123456789',
+            'student_relationship' => 'Mãe',
+            'profession' => 'Vendedora',
+            'cc' => '12345678',
+            'NIF' => '123456789',
+            'residence' => 'Rua lá do sítio',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

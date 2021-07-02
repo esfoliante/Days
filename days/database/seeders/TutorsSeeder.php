@@ -17,15 +17,15 @@ class TutorsSeeder extends Seeder
     public function run()
     {
         DB::table('tutors')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
+            'name' => 'Papa Aguiar',
+            'email' => 'pai@gmail.com',
             'password' => Hash::make('12345678'),
-            'contact' => Str::random(9),
+            'contact' => '912345678',
             'student_relationship' => 'Pai',
-            'profession' => Str::random(10),
-            'cc' => Str::random(8),
-            'NIF' => Str::random(9),
-            'residence' => Str::random(20),
+            'profession' => 'Trolha',
+            'cc' => '12345678',
+            'NIF' => '123456789',
+            'residence' => 'Rua lá do sítio',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             'birthday' => '2003-03-02',

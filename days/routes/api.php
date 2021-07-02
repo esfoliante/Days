@@ -25,7 +25,9 @@ use App\Http\Controllers\CommunicationStudentController;
 use App\Http\Controllers\StudentsClassController;
 use App\Http\Controllers\Auth\AuthController;
 
-Route::middleware('auth:api')->group( function () {
+
+Route::middleware(['auth:api', 'auth:usersApi'])->group(function() {
+
     Route::resources([
         'users' => UserController::class,
         'tutors' => TutorsController::class,
@@ -69,7 +71,47 @@ Route::middleware('auth:api')->group( function () {
         'indexByStudent',
     ]);
 
+    Route::get('students/{student}/movements', [
+        StudentsController::class,
+        'accountMovements',
+    ]);
+
+});
+
+Route::middleware('auth:api')->group( function () {
+    Route::resources([
+        'entrances' => EntrancesController::class,
+    ]);
+
+    Route::get('students/{student}/entrances', [
+        StudentsController::class,
+        'indexEntrances',
+    ]);
+
+    Route::get('students/{student}/movements', [
+        StudentsController::class,
+        'accountMovements',
+    ]);
+
+    Route::get('students/{student}/total', [
+        StudentsController::class,
+        'indexTotal',
+    ]);
+
+    Route::get('students/{student}/absences', [
+        AbsencesController::class,
+        'indexByStudent',
+    ]);
+
+    Route::get('students/{student}/movements', [
+        StudentsController::class,
+        'accountMovements',
+    ]);
+
     Route::get('students/student', [AuthController::class, 'currentStudent']);
+});
+
+Route::middleware('auth:usersApi')->group( function () {
     Route::get('users/user', [AuthController::class, 'currentUser']);
 });
 

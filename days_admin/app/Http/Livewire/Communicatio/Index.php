@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Communicatio;
 
 use App\Http\Traits\WithModal;
 use App\Models\Communicatio;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -96,6 +97,7 @@ class Index extends Component
 
         $this->title = $communicatio->title ??'';
         $this->content = $communicatio->content ??'';
+        $this->user_id = Auth::user()->id ?? '';
 
         $this->emit('clear-input');
     }
@@ -105,6 +107,7 @@ class Index extends Component
         return [
             'title' => 'string|required',
 			'content' => 'string|required',
+            'user_id' => 'required|integer'
         ];
     }
 

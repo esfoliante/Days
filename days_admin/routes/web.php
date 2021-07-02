@@ -13,20 +13,23 @@
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [
+        App\Http\Controllers\HomeController::class,
+        'index',
+    ])->name('home');
 
     Route::resources([
         'users' => App\Http\Controllers\UserController::class,
-		'tutors' => App\Http\Controllers\TutorController::class,
-		'courses' => App\Http\Controllers\CourseController::class,
-		'students' => App\Http\Controllers\StudentController::class,
-		'parentmodels' => App\Http\Controllers\ParentModelController::class,
-		'schoolclasses' => App\Http\Controllers\SchoolClassController::class,
-		'accmovements' => App\Http\Controllers\AccMovementController::class,
-		'subjects' => App\Http\Controllers\SubjectController::class,
-		'communicatios' => App\Http\Controllers\CommunicatioController::class,
-		'schedules' => App\Http\Controllers\ScheduleController::class,
-		'classrooms' => App\Http\Controllers\ClassroomController::class,
+        'tutors' => App\Http\Controllers\TutorController::class,
+        'courses' => App\Http\Controllers\CourseController::class,
+        'students' => App\Http\Controllers\StudentController::class,
+        'parentmodels' => App\Http\Controllers\ParentModelController::class,
+        'schoolclasses' => App\Http\Controllers\SchoolClassController::class,
+        'accmovements' => App\Http\Controllers\AccMovementController::class,
+        'subjects' => App\Http\Controllers\SubjectController::class,
+        'communicatios' => App\Http\Controllers\CommunicatioController::class,
+        'schedules' => App\Http\Controllers\ScheduleController::class,
+        'classrooms' => App\Http\Controllers\ClassroomController::class,
+        'roles' => App\Http\Controllers\RoleController::class,
     ]);
 });

@@ -17,7 +17,7 @@ class Communicatio extends Model
     protected $fillable = [
         'title',
 		'content',
-
+        'user_id',
     ];
 
     protected $dates = [

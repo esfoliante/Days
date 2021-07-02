@@ -15,7 +15,7 @@
     <div class="card card-accent-primary">
         <div class="card-header d-flex align-items-center justify-content-between">
             {{ __('Dashboard') }}
-            <button type="button" class="btn btn-primary" wire:click="create">Nova(o) Communicatio</button>
+            <button type="button" class="btn btn-primary" wire:click="create">Nova Comunicação</button>
 
         </div>
 
@@ -26,7 +26,7 @@
                     <th scope="col">#</th>
                     <th>Título</th>
 					<th>Conteúdo</th>
-					
+
                     <th scope="col">Criado a</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -36,9 +36,9 @@
                 @forelse($communicatios as $communicatioItem)
                     <tr>
                         <th scope="row">{{ $communicatioItem->id }}</th>
-                        <td>{{ $communicatioItem->title ?? '' }}</td>
-						<td>{{ \Illuminate\Support\Str::words(strip_tags($communicatioItem->content), 10,'...')  }}</td>
-						
+                        <td>{{ \Illuminate\Support\Str::limit($communicatioItem->title, 30, '...') }}</td>
+						<td>{{ \Illuminate\Support\Str::limit($communicatioItem->content, 10,'...')  }}</td>
+
 
                         <td>{{ $communicatioItem->created_at->diffForHumans()  }}</td>
 
@@ -72,7 +72,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"
-                        id="exampleModalLabel">{{ isset($communicatio) ? __('Editar Communicatio') : __('Novo Communicatio') }}</h5>
+                        id="exampleModalLabel">{{ isset($communicatio) ? __('Editar Comunicação') : __('Novo Comunicação') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -80,13 +80,16 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="store">
 
-                        
 
+            <div class="input-group mb-3">
+                <input type="hidden" class="form-control @error('title') is-invalid @enderror"
+                       wire:model="user_id" name="User">
+            </div>
 
             <label for="basiurl">Título</label>
             <div class="input-group mb-3">
                     <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                   wire:model="title" name="Título">
+                                   wire:model="title" name="Título" value="{{ auth()->user()->id }}">
                      @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -156,7 +159,7 @@
         });
 
 
-        
+
 
 
 
